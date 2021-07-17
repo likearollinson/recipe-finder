@@ -1,8 +1,25 @@
 // Element variables from index.html
+const foodButton = document.querySelector("#food-button");
+const drinksButton = document.querySelector("#drinks-button");
+
+
 const foodSearchFormEl = document.querySelector("#food-search-form");
 const ingredientSearchInput = document.querySelector("#food-ingredient-search-input");
 
 let ingredient;
+
+
+foodButton.addEventListener("click", function(event) {
+    event.preventDefault();
+    location.href = "pages/food.html";
+})
+
+drinksButton.addEventListener("click", function(event) {
+    event.preventDefault();
+    location.href = "pages/drinks.html";
+})
+
+
 
 foodSearchFormEl.addEventListener("submit", function(event) {
     event.preventDefault();
