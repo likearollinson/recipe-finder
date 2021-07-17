@@ -1,10 +1,46 @@
+// Element variables from index.html
+const foodSearchFormEl = document.querySelector("#food-search-form");
+const ingredientSearchInput = document.querySelector("#ingredient-search-input");
+
+let ingredient;
+
+foodSearchFormEl.addEventListener("submit", function() {
+    ingredient = ingredientSearchInput.value;
+    getFoodRecipe(ingredient);
+})
+
+
+
+
+// Variables for food recipe search API
 const foodURL = "https://api.edamam.com/api/recipes/v2?type=public&q=";
 const appIDKey = "&app_id=99f65177&app_key=ecb411eb41e5416150875af0c19ffec7";
 
-let food = "salt";
+function getFoodRecipe(ingredient) {
+    fetch(foodURL + ingredient + appIDKey)
+        .then(function(response) {
+            if (response.ok) {
+                return response.json();
+            }
+        })
+        .then(function(data) {
+            if (data.count !== 0) {
+                console.log(data);
+                console.log(data.hits[0].recipe.label);
+                console.log(data.hits[0].recipe.image);
+                console.log(data.hits[0].recipe.url);
+            }
+        })
+}
 
-function getRecipe() {
-    fetch(foodURL + food + appIDKey)
+
+
+const drinkURL = "https://thecocktaildb.com/api/json/v1/1/search.php?s=";
+
+let cocktailName = "margarita";
+
+function getDrinkRecipe() {
+    fetch(drinkURL)
         .then(function(response) {
             return response.json();
         })
@@ -13,4 +49,4 @@ function getRecipe() {
         })
 }
 
-getRecipe();
+getDrinkRecipe();
