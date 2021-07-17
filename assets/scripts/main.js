@@ -1,11 +1,13 @@
 // Element variables from index.html
 const foodSearchFormEl = document.querySelector("#food-search-form");
-const ingredientSearchInput = document.querySelector("#ingredient-search-input");
+const ingredientSearchInput = document.querySelector("#food-ingredient-search-input");
 
 let ingredient;
 
-foodSearchFormEl.addEventListener("submit", function() {
+foodSearchFormEl.addEventListener("submit", function(event) {
+    event.preventDefault();
     ingredient = ingredientSearchInput.value;
+    ingredientSearchInput.value = "";
     getFoodRecipe(ingredient);
 })
 
@@ -49,4 +51,4 @@ function getDrinkRecipe() {
         })
 }
 
-getDrinkRecipe();
+// getDrinkRecipe();
