@@ -8,25 +8,31 @@ const ingredientSearchInput = document.querySelector("#food-ingredient-search-in
 
 let ingredient;
 
+// Adds conditional to prevent errors after going to food.html or drinks.html
+if (window.location.pathname === "/index.html") {
 
-foodButton.addEventListener("click", function(event) {
-    event.preventDefault();
-    location.href = "pages/food.html";
-})
+    foodButton.addEventListener("click", function(event) {
+        event.preventDefault();
+        location.href = "pages/food.html";
+    })
+    
+    drinksButton.addEventListener("click", function(event) {
+        event.preventDefault();
+        location.href = "pages/drinks.html";
+    })
+}
 
-drinksButton.addEventListener("click", function(event) {
-    event.preventDefault();
-    location.href = "pages/drinks.html";
-})
 
+// Adds conditional to prevent errors on landing page
+if (window.location.pathname === "/pages/food.html") {
+    foodSearchFormEl.addEventListener("submit", function(event) {
+        event.preventDefault();
+        ingredient = ingredientSearchInput.value;
+        ingredientSearchInput.value = "";
+        getFoodRecipe(ingredient);
+    })
+}
 
-
-foodSearchFormEl.addEventListener("submit", function(event) {
-    event.preventDefault();
-    ingredient = ingredientSearchInput.value;
-    ingredientSearchInput.value = "";
-    getFoodRecipe(ingredient);
-})
 
 
 
