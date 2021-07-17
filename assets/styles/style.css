@@ -1,0 +1,62 @@
+:root {
+    background-image: url(assets/images/background-food.jpg);
+    background-repeat: no-repeat;
+    overflow:visible;
+    height: 100vh;
+    background-size: cover;
+  }
+  
+  .hero {
+    background-color: rgb(9, 70, 70);
+  }
+  
+  .hero-title {
+    color: white;
+    text-align: center;
+    font-size: 2.5rem;
+    font-family: "Otomanopee One", sans-serif;
+  }
+  
+  .section {
+    text-align: center;
+  }
+  
+  h1.title {
+    color: rgb(255, 255, 255);
+    font-family: "Lora", serif;
+  }
+  h2.subtitle {
+    color: white;
+    font-family: "Lora", serif;
+  }
+  
+  i {
+    color: #d73905;
+  }
+  
+  
+  .footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 10px;
+    background-color: rgb(9, 70, 70);
+    color: white;
+    font-weight:900;
+  }
+  body {
+      vertical-align: middle;
+  }
+  
+  .notification {
+    text-align: center;
+    font-size: 2.5rem;
+    background-color: rgb(92, 11, 11);
+    color: rgb(255, 255, 255);
+    text-shadow: 0 2px 0 black;
+    font-family: "Lora", serif;
+    border-radius: 10px;
+  }
+  
+  
