@@ -1,5 +1,5 @@
 :root {
-    background-image: url(assets/images/background-food.jpg);
+    background-image: url(../assets/images/food-hero.jpg);
     background-repeat: no-repeat;
     overflow: visible;
     height: 100vh;
@@ -7,16 +7,28 @@
   }
   
   .hero {
-    background-color: rgb(9, 70, 70);
+    background: linear-gradient(#0c352c, #006d55);
   }
   
   .hero-title {
-    color: white;
+    color: rgb(255, 255, 255);
     text-align: center;
     font-size: 2.5rem;
-    font-family: "Otomanopee One", sans-serif;
+    background-color: #d78305;
+    max-width: 100%;
+    margin: auto;
+    padding: 10px;
+    border-radius: 10px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-shadow: 1px 2px 1px black;
   }
   
+  #skillet-and-shaker {
+    font-size: 4.5rem;
+    color: #2F6675;
+    font-family: "Otomanopee One", sans-serif;
+  }
+
   .section {
     text-align: center;
   }
@@ -25,6 +37,7 @@
     color: rgb(255, 255, 255);
     font-family: "Lora", serif;
   }
+
   h2.subtitle {
     color: white;
     font-family: "Lora", serif;
@@ -32,34 +45,42 @@
   
   i {
     color: #d73905;
+    font-size: 4.5rem;
   }
   
   
   .footer {
-    position: fixed;
+    position: relative;
     bottom: 0;
     left: 0;
     right: 0;
-    height: 10px;
-    background-color: rgb(9, 70, 70);
+    height: 0;
+    background-color: #006d55;
     color: white;
     font-weight:900;
-  }
-  body {
-      vertical-align: middle;
-      
+    border-top: 2px solid white;
   }
   
   .notification {
     text-align: center;
     font-size: 2.5rem;
-    background-color: rgb(92, 11, 11);
+    background-color: #B93B29;
     color: rgb(255, 255, 255);
     text-shadow: 0 2px 0 black;
     font-family: "Lora", serif;
     border-radius: 10px;
+    max-width: 100%;
+    margin: auto;
   }
-  /* .food-hero {
-      text-align: center;
-  } */
   
+  #food-image {
+      position: relative;
+      max-width: 80%;
+      height: auto;
+      border:2px solid rgb(9, 70, 70);
+      margin-top: 10px;
+  }
+  
+  
+
+    
