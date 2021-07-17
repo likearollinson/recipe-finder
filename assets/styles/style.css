@@ -1,9 +1,9 @@
 :root {
     background-image: url(assets/images/background-food.jpg);
     background-repeat: no-repeat;
-    overflow:visible;
+    overflow: visible;
     height: 100vh;
-    background-size: cover;
+    background-size:cover;
   }
   
   .hero {
@@ -47,6 +47,7 @@
   }
   body {
       vertical-align: middle;
+      
   }
   
   .notification {
@@ -58,5 +59,7 @@
     font-family: "Lora", serif;
     border-radius: 10px;
   }
-  
+  /* .food-hero {
+      text-align: center;
+  } */
   

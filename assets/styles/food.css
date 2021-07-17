@@ -1,0 +1,20 @@
+:root {
+    background-image: url(../assets/images/food-hero-image.jpg);
+    background-repeat: no-repeat;
+    overflow:visible;
+    height: 100vh;
+    background-size: contain;
+}
+
+.card {
+    background-color: rgb(60, 86, 99);
+}
+
+.title, .subtitle {
+    color: white;
+    margin-left: 20px;
+}
+
+.image {
+    margin: 15px;
+}

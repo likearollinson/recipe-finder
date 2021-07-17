@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="assets/images/favicon.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:ital@1&family=Otomanopee+One&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../assets/styles/food.css" />
+    <title>FOOD</title>
+  </head>
+  <body>
+    <section class="hero is-small is-link">
+      <div class="hero-body">
+        <p class="title food-hero">
+          Skillet & Shaker<br />
+          Food Search
+        </p>
+        <p class="subtitle">
+          Need help finding a recipe? We've got you covered!
+        </p>
+      </div>
+    </section>
+    <div class="card">
+      <div class="card-image"></div>
+      <div class="card-content">
+        <div class="media">
+          <div class="media-centered">
+            <figure class="image is-96x96">
+              <img
+                src="../assets/images/background-food.jpg"
+                alt="food image"
+              />
+            </figure>
+          </div>
+          <div class="media-content">
+            <p class="title is-4">Search Options</p>
+            <p class="subtitle is-6">Search params GO HERE...</p>
+            <form id="food-search-form">
+            <input class="input" id="food-ingredient-search-input" type="text" placeholder="Search by ingredient">
+            <input class="input" type="text" placeholder="Search by diet">
+            <input class="input" type="text" placeholder="Search by cook time">
+            <button type="submit" class="button is-warning submit-search">SEARCH</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
