@@ -7,6 +7,8 @@ const drinksButton = document.querySelector("#drinks-search-button");
 const foodSearchFormEl = document.querySelector("#food-search-form");
 const ingredientSearchInput = document.querySelector("#food-ingredient-search-input");
 
+const foodDropdownEl = document.querySelector("#food-dropdown-menu");
+
 let ingredient;
 
 
@@ -22,6 +24,13 @@ if (foodButton !== null && drinksButton !== null) {
         location.href = "pages/drinks.html";
     })
 }
+
+
+// Event listener for dropdown menu
+foodDropdownEl.addEventListener("change", function(event) {
+    event.preventDefault();
+    foodDropdownEl.textContent = foodDropdownEl.value;
+})
 
 
 // Adds conditional to prevent errors on landing page
