@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
@@ -52,18 +53,18 @@
 
       <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
-          <a class="navbar-item"> <strong>Home</strong> </a>
+          <a href="#" id="home-button" class="navbar-item"> <strong>Home</strong> </a>
 
-          <a class="navbar-item"> <strong>Mission</strong> </a>
+          <a href="#mission-section" id="mission-button" class="navbar-item"> <strong>Mission</strong> </a>
         </div>
 
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons">
-              <a class="button is-link">
+              <a id="food-search-button" class="button is-link">
                 <strong>Search Food</strong>
               </a>
-              <a class="button is-link"><strong>Search Drinks</strong></a>
+              <a id="drinks-search-button" class="button is-link"><strong>Search Drinks</strong></a>
             </div>
           </div>
         </div>
@@ -89,7 +90,7 @@
       </div>
     </section>
     <!-- Main -->
-    <section class="section">
+    <section id="mission-section" class="section">
       <h1 class="title">Mission</h1>
       <h2 class="subtitle">
         At <strong style="color: rgb(17, 110, 163)">Skillet & Shaker</strong> our
@@ -162,5 +163,6 @@
         </p>
       </div>
     </footer>
+    <script src="assets/scripts/main.js"></script>
   </body>
 </html>
