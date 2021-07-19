@@ -1,37 +1,35 @@
 // Element variables from index.html
-const foodButton = document.querySelector("#food-button");
-const drinksButton = document.querySelector("#drinks-button");
-
+const homeButton = document.querySelector("#home-button");
+const missionButton = document.querySelector("#mission-button");
+const foodButton = document.querySelector("#food-search-button");
+const drinksButton = document.querySelector("#drinks-search-button");
 
 const foodSearchFormEl = document.querySelector("#food-search-form");
 const ingredientSearchInput = document.querySelector("#food-ingredient-search-input");
 
 let ingredient;
 
-// Adds conditional to prevent errors after going to food.html or drinks.html
-if (window.location.pathname === "/index.html") {
 
-    foodButton.addEventListener("click", function(event) {
-        event.preventDefault();
-        location.href = "pages/food.html";
-    })
-    
-    drinksButton.addEventListener("click", function(event) {
-        event.preventDefault();
-        location.href = "pages/drinks.html";
-    })
-}
+// Adds event listeners for food and drinks search buttons to go to respective pages
+foodButton.addEventListener("click", function(event) {
+    event.preventDefault();
+    location.href = "pages/food.html";
+})
+
+drinksButton.addEventListener("click", function(event) {
+    event.preventDefault();
+    location.href = "pages/drinks.html";
+})
 
 
 // Adds conditional to prevent errors on landing page
-if (window.location.pathname === "/pages/food.html") {
-    foodSearchFormEl.addEventListener("submit", function(event) {
-        event.preventDefault();
-        ingredient = ingredientSearchInput.value;
-        ingredientSearchInput.value = "";
-        getFoodRecipe(ingredient);
-    })
-}
+
+foodSearchFormEl.addEventListener("submit", function(event) {
+    event.preventDefault();
+    ingredient = ingredientSearchInput.value;
+    ingredientSearchInput.value = "";
+    getFoodRecipe(ingredient);
+})
 
 
 
