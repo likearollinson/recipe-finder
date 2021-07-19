@@ -11,25 +11,29 @@ let ingredient;
 
 
 // Adds event listeners for food and drinks search buttons to go to respective pages
-foodButton.addEventListener("click", function(event) {
-    event.preventDefault();
-    location.href = "pages/food.html";
-})
-
-drinksButton.addEventListener("click", function(event) {
-    event.preventDefault();
-    location.href = "pages/drinks.html";
-})
+if (foodButton !== null && drinksButton !== null) {
+    foodButton.addEventListener("click", function(event) {
+        event.preventDefault();
+        location.href = "pages/food.html";
+    })
+    
+    drinksButton.addEventListener("click", function(event) {
+        event.preventDefault();
+        location.href = "pages/drinks.html";
+    })
+}
 
 
 // Adds conditional to prevent errors on landing page
+if (foodSearchFormEl !== null) {
+    foodSearchFormEl.addEventListener("submit", function(event) {
+        event.preventDefault();
+        ingredient = ingredientSearchInput.value;
+        ingredientSearchInput.value = "";
+        getFoodRecipe(ingredient);
+    })
+}
 
-foodSearchFormEl.addEventListener("submit", function(event) {
-    event.preventDefault();
-    ingredient = ingredientSearchInput.value;
-    ingredientSearchInput.value = "";
-    getFoodRecipe(ingredient);
-})
 
 
 
