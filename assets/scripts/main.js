@@ -84,20 +84,16 @@ var drinkURL = "https://thecocktaildb.com/api/json/v1/1/";
 var ingredientEl = document.querySelector("#ingredient");
 var cocktailNameEl = document.querySelector("#cocktail-name");
 
-var searchBtnEl = document.querySelector("#search-btn")
-
-
-
-console.log("poop");
+var searchBtnEl = document.querySelector("#search-btn");
 
 searchBtnEl.addEventListener("click", function() {
-    console.log(cocktailNameEl.value)
-    console.log(ingredientEl.value)
-    console.log(ingredientSearch)
-    var alc = window.prompt("Alcoholic or Non_Alcoholic")
-    var ingredientSearch = "filter.php?i=" + ingredientEl.value
-    var cocktailNameSearch = "search.php?s=" + cocktailNameEl.value
-    var searchURL = drinkURL + ingredientSearch
+    console.log(cocktailNameEl.value);
+    console.log(ingredientEl.value);
+    console.log(ingredientSearch);
+    var ingredientSearch = "filter.php?i=" + ingredientEl.value;
+    var cocktailNameSearch = "search.php?s=" + cocktailNameEl.value;
+    var searchURL = drinkURL + ingredientSearch + "&=Alcoholic";
+    var byNameURL = drinkURL + cocktailNameSearch;
     function getDrinkRecipe() { 
         fetch(searchURL)
             .then(function(response) {
@@ -107,7 +103,18 @@ searchBtnEl.addEventListener("click", function() {
                 console.log(data);
         })
     }
+    function getDrinkRecipeName() { 
+        fetch(byNameURL)
+            .then(function(response) {
+            return response.json();
+        })
+            .then(function(data) {
+                console.log(data);
+        })
+    }
+    
     getDrinkRecipe();
+    getDrinkRecipeName();
 })
 
 
