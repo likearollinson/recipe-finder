@@ -12,6 +12,8 @@ const foodDropdownItems = document.querySelectorAll(".food-dropdown-item");
 
 let ingredient;
 
+//This is a change so I can push
+
 
 // Adds event listeners for food and drinks search buttons to go to respective pages
 // if (foodButton !== null && drinksButton !== null) {
