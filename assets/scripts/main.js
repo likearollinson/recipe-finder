@@ -81,7 +81,7 @@ var drinkURL = "https://thecocktaildb.com/api/json/v1/1/";
 var ingredientEl = document.querySelector("#ingredient");
 var cocktailNameEl = document.querySelector("#cocktail-name");
 
-var searchBtnEl = document.querySelector("#search-btn")
+var searchBtnEl = document.querySelector("#search-btn");
 
 searchBtnEl.addEventListener("click", function() {
     console.log(cocktailNameEl.value);
