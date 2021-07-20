@@ -7,7 +7,7 @@ const drinksButton = document.querySelector("#drinks-search-button");
 const foodSearchFormEl = document.querySelector("#food-search-form");
 const ingredientSearchInput = document.querySelector("#food-ingredient-search-input");
 
-const foodDropdownTextEl = document.querySelector("#dropdown-text");
+const foodDropdownTextEl = document.querySelector("#food-dropdown-text");
 const foodDropdownItems = document.querySelectorAll(".food-dropdown-item");
 
 let ingredient;
@@ -67,27 +67,48 @@ function getFoodRecipe(ingredient) {
         .then(function(data) {
             if (data.count !== 0) {
                 console.log(data);
-                console.log(data.hits[0].recipe.label);
-                console.log(data.hits[0].recipe.image);
-                console.log(data.hits[0].recipe.url);
+                console.log(data.hits);
+                for (let i = 0; i < data.hits.length; i++) {
+                    console.log(data.hits[i].recipe.label);
+                    console.log(data.hits[i].recipe.image);
+                    console.log(data.hits[i].recipe.url);
+                }
             }
         })
 }
 
 
 
-const drinkURL = "https://thecocktaildb.com/api/json/v1/1/search.php?s=";
+var drinkURL = "https://thecocktaildb.com/api/json/v1/1/";
 
-let cocktailName = "margarita";
+var ingredientEl = document.querySelector("#ingredient");
+var cocktailNameEl = document.querySelector("#cocktail-name");
 
-function getDrinkRecipe() {
-    fetch(drinkURL)
-        .then(function(response) {
+var searchBtnEl = document.querySelector("#search-btn")
+
+
+
+console.log("poop");
+
+searchBtnEl.addEventListener("click", function() {
+    console.log(cocktailNameEl.value)
+    console.log(ingredientEl.value)
+    console.log(ingredientSearch)
+    var alc = window.prompt("Alcoholic or Non_Alcoholic")
+    var ingredientSearch = "filter.php?i=" + ingredientEl.value
+    var cocktailNameSearch = "search.php?s=" + cocktailNameEl.value
+    var searchURL = drinkURL + ingredientSearch
+    function getDrinkRecipe() { 
+        fetch(searchURL)
+            .then(function(response) {
             return response.json();
         })
-        .then(function(data) {
-            console.log(data);
+            .then(function(data) {
+                console.log(data);
         })
-}
+    }
+    getDrinkRecipe();
+})
+
 
 // getDrinkRecipe();
