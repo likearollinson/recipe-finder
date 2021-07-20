@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../assets/images/favicon.png" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -54,7 +55,6 @@
         </div>
       </div>
     </div>
-    </div>
   </nav>
   <!-- Main -->
   <section class="hero is-medium is-dark" style="
@@ -72,51 +72,37 @@
       </p>
       <section class="section">
         <h1 class="title">Narrow down your search by focusing on ingredients, diet, or cook time.</h1>
-        <label class="has-text-primary is-size-3"><strong>Ingredient</strong>
-          <input class="input" type="text" placeholder="Search by ingredient">
-        </label><br><br>
-        <label class="has-text-primary is-size-3"><strong>Diet</strong>
-          <input class="input" type="text" placeholder="Search by diet">
-        </label><br><br>
+        <form id="food-search-form">
+          <label class="has-text-primary is-size-3"><strong>Ingredient</strong></label>
+            <input id="food-ingredient-search-input" class="input" type="text" placeholder="Search by ingredient">
+          <br><br>
+          <label class="has-text-primary is-size-3"><strong>Diet</strong></label>
+            <input class="input" type="text" placeholder="Search by diet">
+          <br><br>
 
-        <label class="has-text-primary is-size-3"><strong>Cook Time</strong><br>
+          <label class="has-text-primary is-size-3"><strong>Cook Time</strong></label><br>
 
-          <div class="dropdown is-right is-hoverable">
-            <div class="dropdown-trigger">
-              <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-                <span>Choose your preferred cook time</span>
-                <span class="icon is-small">
-                  <i class="fa fa-angle-down" aria-hidden="true"></i>
-                </span>
-              </button>
-            </div>
-            <div class="dropdown-menu" id="food-dropdown-menu" role="menu">
-              <div class="dropdown-content">
-                <a href="#" class="dropdown-item">30 minutes</a>
-                <a href="#" class="dropdown-item">45 minutes</a>
-                <a href="#" class="dropdown-item">60+ minutes</a>
+            <div class="dropdown is-right is-hoverable">
+              <div class="dropdown-trigger">
+                <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                  <span id="food-dropdown-text">Choose your preferred cook time</span>
+                  <span class="icon is-small">
+                    <i class="fa fa-angle-down" aria-hidden="true"></i>
+                  </span>
+                </button>
+              </div>
+              <div class="dropdown-menu" id="food-dropdown-menu" role="menu">
+                <div class="dropdown-content">
+                  <a class="dropdown-item food-dropdown-item">30 minutes</a>
+                  <a class="dropdown-item food-dropdown-item">45 minutes</a>
+                  <a class="dropdown-item food-dropdown-item">60+ minutes</a>
+                </div>
               </div>
             </div>
-          </div>
-          <br><br>
-          <button class="button is-large is-fullwidth is-success" type="submit">Search</button>
-          <script>
-            //DOMContentLoaded - it fires when initial HTML document has been completely loaded
-            document.addEventListener('DOMContentLoaded', function () {
-              // querySelector - it returns the element within the document that matches the specified selector
-              var dropdown = document.querySelector('.dropdown');
-
-              //addEventListener - attaches an event handler to the specified element.
-              dropdown.addEventListener('click', function (event) {
-
-                //event.stopPropagation() - it stops the bubbling of an event to parent elements, by preventing parent event handlers from being executed
-                event.stopPropagation();
-
-                //classList.toggle - it toggles between adding and removing a class name from an element
-                dropdown.classList.toggle('is-active');
-              });
-            });
-          </script>
+            <br><br>
+            <button class="button is-large is-fullwidth is-success" type="submit">Search</button>
+        </form>
+      </section>
     </div>
   </section>
   <!-- Footer -->
@@ -129,6 +115,27 @@
       </p>
     </div>
   </footer>
+
+  <script>
+    //DOMContentLoaded - it fires when initial HTML document has been completely loaded
+    document.addEventListener('DOMContentLoaded', function () {
+      // querySelector - it returns the element within the document that matches the specified selector
+      var dropdown = document.querySelector('.dropdown');
+
+      //addEventListener - attaches an event handler to the specified element.
+      dropdown.addEventListener('click', function (event) {
+
+        //event.stopPropagation() - it stops the bubbling of an event to parent elements, by preventing parent event handlers from being executed
+        event.stopPropagation();
+
+        //classList.toggle - it toggles between adding and removing a class name from an element
+        dropdown.classList.toggle('is-active');
+      });
+    });
+  </script>
+
+  <script src="../assets/scripts/main.js"></script>
+
 </body>
 
 </html>
