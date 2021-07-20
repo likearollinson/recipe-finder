@@ -62,18 +62,35 @@ function getFoodRecipe(ingredient) {
 
 
 
-const drinkURL = "https://thecocktaildb.com/api/json/v1/1/search.php?s=";
+var drinkURL = "https://thecocktaildb.com/api/json/v1/1/search.php?";
 
-let cocktailName = "margarita";
+var ingredientEl = document.querySelector("#ingredient");
+var cocktailNameEl = document.querySelector("#cocktail-name");
 
-function getDrinkRecipe() {
-    fetch(drinkURL)
-        .then(function(response) {
+var ingredientSearch = "i=" + ingredientEl.value
+var cocktailNameSearch = "s=" + cocktailNameEl.value
+
+var searchBtnEl = document.querySelector("#search-btn")
+
+var searchURL = drinkURL + ingredientSearch
+
+console.log("poop");
+
+searchBtnEl.addEventListener("click", function() {
+    console.log(cocktailNameEl.value)
+    console.log(ingredientEl.value)
+    console.log(ingredientSearch)
+    function getDrinkRecipe() { 
+        fetch(searchURL)
+            .then(function(response) {
             return response.json();
         })
-        .then(function(data) {
-            console.log(data);
+            .then(function(data) {
+                console.log(data);
         })
-}
+    }
+    getDrinkRecipe();
+})
+
 
 // getDrinkRecipe();

@@ -21,7 +21,6 @@
       integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="bulma.css" />
     <title>Drinks Search Page</title>
 </head>
 <body>
@@ -86,10 +85,10 @@
           <section class="section">
             <h1 class="title">Narrow down your search by focusing on ingredients, type of alcohol, or filter drinks by alcoho.</h1>
             <label class="has-text-primary is-size-3"><strong>Ingredient</strong>
-                <input class="input" type="text" placeholder="Search by ingredient">
+                <input class="input" id="ingredient" type="text" placeholder="Search by ingredient">
             </label><br><br>
-            <label class="has-text-primary is-size-3"><strong>Diet</strong>
-                <input class="input" type="text" placeholder="Search by diet">
+            <label class="has-text-primary is-size-3"><strong>Cocktail Name</strong>
+                <input class="input" id="cocktail-name" type="text" placeholder="Search by cocktail name">
             </label><br><br>
             
                     <label class="has-text-primary is-size-3"><strong>Cook Time</strong><br>
@@ -111,7 +110,7 @@
                       </div>
                    </div>
                    <br><br>
-                   <button class="button is-large is-fullwidth is-success" type="submit">Search</button>
+                   <button class="button is-large is-fullwidth is-success" id="search-btn" type="submit">Search</button>
                    <script>
                       //DOMContentLoaded - it fires when initial HTML document has been completely loaded
                       document.addEventListener('DOMContentLoaded', function () {
@@ -141,7 +140,8 @@
           </p>
         </div>
       </footer>
-</body>
+      <script src="../assets/scripts/main.js"></script>
+    </body>
 </html>
 
 
