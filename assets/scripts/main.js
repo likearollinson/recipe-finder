@@ -7,19 +7,33 @@ const drinksButton = document.querySelector("#drinks-search-button");
 const foodSearchFormEl = document.querySelector("#food-search-form");
 const ingredientSearchInput = document.querySelector("#food-ingredient-search-input");
 
+const foodDropdownTextEl = document.querySelector("#dropdown-text");
+const foodDropdownItems = document.querySelectorAll(".food-dropdown-item");
+
 let ingredient;
 
 
 // Adds event listeners for food and drinks search buttons to go to respective pages
-if (foodButton !== null && drinksButton !== null) {
-    foodButton.addEventListener("click", function(event) {
-        event.preventDefault();
-        location.href = "pages/food.html";
-    })
+// if (foodButton !== null && drinksButton !== null) {
+//     foodButton.addEventListener("click", function(event) {
+//         event.preventDefault();
+//         location.href = "pages/food.html";
+//     })
     
-    drinksButton.addEventListener("click", function(event) {
+//     drinksButton.addEventListener("click", function(event) {
+//         event.preventDefault();
+//         location.href = "pages/drinks.html";
+//     })
+// }
+
+// This is a change that I need to see reflected in GitHub
+
+
+// Event listener for dropdown menu to change text upon selection
+for (let i = 0; i < foodDropdownItems.length; i++) {
+    foodDropdownItems[i].addEventListener("click", function(event) {
         event.preventDefault();
-        location.href = "pages/drinks.html";
+        foodDropdownTextEl.textContent = event.target.textContent;
     })
 }
 
