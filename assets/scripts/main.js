@@ -7,7 +7,7 @@ const drinksButton = document.querySelector("#drinks-search-button");
 const foodSearchFormEl = document.querySelector("#food-search-form");
 const ingredientSearchInput = document.querySelector("#food-ingredient-search-input");
 
-const foodDropdownTextEl = document.querySelector("#dropdown-text");
+const foodDropdownTextEl = document.querySelector("#food-dropdown-text");
 const foodDropdownItems = document.querySelectorAll(".food-dropdown-item");
 
 let ingredient;
@@ -67,9 +67,12 @@ function getFoodRecipe(ingredient) {
         .then(function(data) {
             if (data.count !== 0) {
                 console.log(data);
-                console.log(data.hits[0].recipe.label);
-                console.log(data.hits[0].recipe.image);
-                console.log(data.hits[0].recipe.url);
+                console.log(data.hits);
+                for (let i = 0; i < data.hits.length; i++) {
+                    console.log(data.hits[i].recipe.label);
+                    console.log(data.hits[i].recipe.image);
+                    console.log(data.hits[i].recipe.url);
+                }
             }
         })
 }
