@@ -95,6 +95,7 @@ searchBtnEl.addEventListener("click", function() {
     var ingredientSearch = "filter.php?i=" + ingredientEl.value
     var cocktailNameSearch = "search.php?s=" + cocktailNameEl.value
     var searchURL = drinkURL + ingredientSearch
+    var byNameURL = drinkURL + cocktailNameSearch
     function getDrinkRecipe() { 
         fetch(searchURL)
             .then(function(response) {
@@ -104,7 +105,18 @@ searchBtnEl.addEventListener("click", function() {
                 console.log(data);
         })
     }
+    function getDrinkRecipeName() { 
+        fetch(byNameURL)
+            .then(function(response) {
+            return response.json();
+        })
+            .then(function(data) {
+                console.log(data);
+        })
+    }
+    
     getDrinkRecipe();
+    getDrinkRecipeName();
 })
 
 
