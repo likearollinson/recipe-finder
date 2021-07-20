@@ -83,19 +83,14 @@ var cocktailNameEl = document.querySelector("#cocktail-name");
 
 var searchBtnEl = document.querySelector("#search-btn")
 
-
-
-console.log("poop");
-
 searchBtnEl.addEventListener("click", function() {
-    console.log(cocktailNameEl.value)
-    console.log(ingredientEl.value)
-    console.log(ingredientSearch)
-    var alc = window.prompt("Alcoholic or Non_Alcoholic")
-    var ingredientSearch = "filter.php?i=" + ingredientEl.value
-    var cocktailNameSearch = "search.php?s=" + cocktailNameEl.value
-    var searchURL = drinkURL + ingredientSearch
-    var byNameURL = drinkURL + cocktailNameSearch
+    console.log(cocktailNameEl.value);
+    console.log(ingredientEl.value);
+    console.log(ingredientSearch);
+    var ingredientSearch = "filter.php?i=" + ingredientEl.value;
+    var cocktailNameSearch = "search.php?s=" + cocktailNameEl.value;
+    var searchURL = drinkURL + ingredientSearch + "&=Alcoholic";
+    var byNameURL = drinkURL + cocktailNameSearch;
     function getDrinkRecipe() { 
         fetch(searchURL)
             .then(function(response) {
