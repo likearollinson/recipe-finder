@@ -62,17 +62,14 @@ function getFoodRecipe(ingredient) {
 
 
 
-var drinkURL = "https://thecocktaildb.com/api/json/v1/1/search.php?";
+var drinkURL = "https://thecocktaildb.com/api/json/v1/1/";
 
 var ingredientEl = document.querySelector("#ingredient");
 var cocktailNameEl = document.querySelector("#cocktail-name");
 
-var ingredientSearch = "i=" + ingredientEl.value
-var cocktailNameSearch = "s=" + cocktailNameEl.value
-
 var searchBtnEl = document.querySelector("#search-btn")
 
-var searchURL = drinkURL + ingredientSearch
+
 
 console.log("poop");
 
@@ -80,6 +77,10 @@ searchBtnEl.addEventListener("click", function() {
     console.log(cocktailNameEl.value)
     console.log(ingredientEl.value)
     console.log(ingredientSearch)
+    var alc = window.prompt("Alcoholic or Non_Alcoholic")
+    var ingredientSearch = "filter.php?i=" + ingredientEl.value
+    var cocktailNameSearch = "search.php?s=" + cocktailNameEl.value
+    var searchURL = drinkURL + ingredientSearch
     function getDrinkRecipe() { 
         fetch(searchURL)
             .then(function(response) {
