@@ -57,6 +57,7 @@ if (foodSearchFormEl !== null) {
 const foodURL = "https://api.edamam.com/api/recipes/v2?type=public&q=";
 const appIDKey = "&app_id=99f65177&app_key=ecb411eb41e5416150875af0c19ffec7";
 
+// Gets data from Edamam API
 function getFoodRecipe(ingredient) {
     fetch(foodURL + ingredient + appIDKey)
         .then(function(response) {
@@ -66,16 +67,38 @@ function getFoodRecipe(ingredient) {
         })
         .then(function(data) {
             if (data.count !== 0) {
-                console.log(data);
-                console.log(data.hits);
-                for (let i = 0; i < data.hits.length; i++) {
-                    console.log(data.hits[i].recipe.label);
-                    console.log(data.hits[i].recipe.image);
-                    console.log(data.hits[i].recipe.url);
-                }
+                showRecipes(data.hits);
             }
         })
 }
+
+// Display recipes on cards within modal
+function showRecipes(recipes) {
+    console.log(recipes);
+    let allFoodRecipes = [];
+
+    // Loop through recipe to create an object of necessary info for each recipe, and add it to the allFoodRecipes array
+    for (let i = 0; i < recipes.length; i++) {
+
+        let nextRecipe = {
+            name: recipes[i].recipe.label,
+            image: recipes[i].recipe.image,
+            url: recipes[i].recipe.url
+        }
+
+        allFoodRecipes.push(nextRecipe);
+    }
+    console.log(allFoodRecipes);
+
+    // TODO:
+    
+    // Show modal
+
+    // Loop through each recipe, creating card elements for each one, adding the necessary info to each card
+}
+
+
+
 
 
 
