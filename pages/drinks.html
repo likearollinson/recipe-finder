@@ -73,53 +73,18 @@
       </p>
       <section class="section">
         <h1 class="title">Narrow down your search by focusing on ingredients, type of alcohol, or filter drinks by
-          alcoho.</h1>
+          alcohol.</h1>
         <form id="drink-search-form">  
-          <label class="has-text-primary is-size-3"><strong>Ingredient</strong>
-            <input class="input"  id="drink-ingredient" type="text" placeholder="Search by ingredient">
-          </label><br><br>
-          <label class="has-text-primary is-size-3"><strong>Diet</strong>
-            <input class="input" type="text" placeholder="Search by diet">
-          </label><br><br>
-
-          <label class="has-text-primary is-size-3"><strong>Cook Time</strong><br>
-
-            <div class="dropdown is-right is-hoverable">
-              <div class="dropdown-trigger">
-                <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-                  <span>Choose your preferred cook time</span>
-                  <span class="icon is-small">
-                    <i class="fa fa-angle-down" aria-hidden="true"></i>
-                  </span>
-                </button>
-              </div>
-              <div class="dropdown-menu" id="dropdown-menu" role="menu">
-                <div class="dropdown-content">
-                  <a href="#" class="dropdown-item">Alcoholic</a>
-                  <a href="#" class="dropdown-item">Non-Alcoholic</a>
-                </div>
-              </div>
-            </div>
-            <br><br>
+          <label class="has-text-primary is-size-3"><strong>Alcohol/Ingredient</strong>
+            <input class="input"  id="drink-ingredient" type="text" placeholder="Search by alcohol or ingredient">
+          </label>
+          <label class="has-text-primary is-size-3"><strong>Cocktail Name</strong>
+            <input class="input" type="text" placeholder="Search by cocktail name">
+          </label>
             <button class="button is-large is-fullwidth is-success" type="submit">Search</button>
           </form>
-          <script>
-            //DOMContentLoaded - it fires when initial HTML document has been completely loaded
-            document.addEventListener('DOMContentLoaded', function () {
-              // querySelector - it returns the element within the document that matches the specified selector
-              var dropdown = document.querySelector('.dropdown');
-
-              //addEventListener - attaches an event handler to the specified element.
-              dropdown.addEventListener('click', function (event) {
-
-                //event.stopPropagation() - it stops the bubbling of an event to parent elements, by preventing parent event handlers from being executed
-                event.stopPropagation();
-
-                //classList.toggle - it toggles between adding and removing a class name from an element
-                dropdown.classList.toggle('is-active');
-              });
-            });
-          </script>
+        <button class="button mb-5 is-large is-fullwidth is-success" type="submit">Search</button>
+        <button class="button  is-large is-fullwidth is-info" type="submit">IDK, Tell Me What to Drink!</button>    
     </div>
   </section>
   <!-- Footer -->
@@ -132,7 +97,7 @@
       </p>
     </div>
   </footer>
-  <script src="../assets/scripts/main.js"></script>
+  <script src="../assets/scripts/drinks.js"></script>
 </body>
 
 </html>
