@@ -6,7 +6,6 @@ const drinksButton = document.querySelector("#drinks-search-button");
 
 
 
-
 var drinkURL = "https://thecocktaildb.com/api/json/v1/1/";
 
 var ingredientEl = document.querySelector("#ingredient");
