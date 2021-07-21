@@ -74,16 +74,17 @@
       <section class="section">
         <h1 class="title">Narrow down your search by focusing on ingredients, type of alcohol, or filter drinks by
           alcohol.</h1>
-        <label class="has-text-primary is-size-3"><strong>Ingredient</strong>
-          <input class="input mb-5" type="text" placeholder="Search by ingredient">
-        </label>
-        <label class="has-text-primary is-size-3"><strong>Alcohol</strong>
-          <input class="input mb-5" type="text" placeholder="Search by diet">
-        </label>
+        <form id="drink-search-form">  
+          <label class="has-text-primary is-size-3"><strong>Alcohol/Ingredient</strong>
+            <input class="input"  id="drink-ingredient" type="text" placeholder="Search by alcohol or ingredient">
+          </label>
+          <label class="has-text-primary is-size-3"><strong>Cocktail Name</strong>
+            <input class="input" type="text" placeholder="Search by cocktail name">
+          </label>
+            <button class="button is-large is-fullwidth is-success" type="submit">Search</button>
+          </form>
         <button class="button mb-5 is-large is-fullwidth is-success" type="submit">Search</button>
-        <button class="button  is-large is-fullwidth is-info" type="submit">IDK, Tell Me What to Drink!</button>
-
-        
+        <button class="button  is-large is-fullwidth is-info" type="submit">IDK, Tell Me What to Drink!</button>    
     </div>
   </section>
   <!-- Footer -->
