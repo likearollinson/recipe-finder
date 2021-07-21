@@ -12,7 +12,22 @@ const foodDropdownItems = document.querySelectorAll(".food-dropdown-item");
 
 let ingredient;
 
+const foodSearchBtn = document.getElementById("food-return");
+const modalCloseBtn = document.getElementById("close-modal");
+const modalBg = document.querySelector(".modal-background");
+const modal = document.querySelector(".modal");
 
+foodSearchBtn.addEventListener("click", () => {
+    modal.classList.add('is-active');
+})
+
+modalCloseBtn.addEventListener("click", () => {
+    modal.classList.remove('is-active');
+})
+
+modalBg.addEventListener("click", () => {
+    modal.classList.remove('is-active');
+})
 // Adds event listeners for food and drinks search buttons to go to respective pages
 // if (foodButton !== null && drinksButton !== null) {
 //     foodButton.addEventListener("click", function(event) {
@@ -44,7 +59,9 @@ if (foodSearchFormEl !== null) {
         event.preventDefault();
         ingredient = ingredientSearchInput.value;
         ingredientSearchInput.value = "";
-        getFoodRecipe(ingredient);
+        modal.classList.add('is-active');
+        
+        
     })
 }
 
