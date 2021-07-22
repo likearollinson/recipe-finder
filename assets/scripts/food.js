@@ -4,23 +4,16 @@ const ingredientSearchInput = document.querySelector("#food-ingredient-search-in
 const dietSelectEl = document.querySelector("#diet-select");
 const timeSelectEl = document.querySelector("#cook-time-select");
 
-// const foodDropdownTextEl = document.querySelector("#food-dropdown-text");
-// const foodDropdownItems = document.querySelectorAll(".food-dropdown-item");
-
+// Variables for modal
 const foodModal = document.querySelector("#food-modal");
 const modalCloseBtn = document.querySelector("#close-modal");
 const modalBg = document.querySelector(".modal-background");
 const modalContentEl = document.querySelector("#modal-content-container");
 
-
+// Initiate these variables globally for use in multiple functions
 let ingredient;
 let diet;
 let time;
-
-
-// foodSearchBtn.addEventListener("click", () => {
-//     modal.classList.add('is-active');
-// })
 
 
 // Add event listeners to close modal
@@ -31,15 +24,6 @@ modalCloseBtn.addEventListener("click", () => {
 modalBg.addEventListener("click", () => {
     foodModal.classList.remove('is-active');
 })
-
-
-// Event listener for dropdown menu to change text upon selection
-// for (let i = 0; i < foodDropdownItems.length; i++) {
-//     foodDropdownItems[i].addEventListener("click", function(event) {
-//         event.preventDefault();
-//         foodDropdownTextEl.textContent = event.target.textContent;
-//     })
-// }
 
 
 // Add event listener to food search form
@@ -53,23 +37,13 @@ foodSearchFormEl.addEventListener("submit", function(event) {
     console.log(typeof(diet));
     console.log(time);
     console.log(typeof(time));
-    // if (!ingredient) {
-    //     ingredient = undefined;
-    // }
-    // if (diet === "Choose preferred diet (optional)") {
-    //     diet = undefined;
-    // }
-    // if (time === "Choose preferred cook time (optional)") {
-    //     time = undefined;
-    // } else {
-    //     if (time === "Less than 30 minutes") {
-    //         time = "30";
-    //     } else if (time === "30 minutes to one hour") {
-    //         time = "30-60";
-    //     } else {
-    //         time = "60%2B";
-    //     }
-    // }
+
+    if (diet === "Choose preferred diet (optional)") {
+        diet = undefined;
+    }
+    if (time === "Choose preferred cook time (optional)") {
+        time = undefined;
+    }
 
     ingredientSearchInput.value = "";
     foodModal.classList.add('is-active');
@@ -140,7 +114,6 @@ function getFoodRecipe(ingredient, diet, time) {
 
 // Display recipes on cards within modal
 function showRecipes(recipes) {
-    console.log(recipes);
     let allFoodRecipes = [];
     modalContentEl.innerHTML = "";
 
@@ -211,10 +184,4 @@ function showRecipes(recipes) {
 
     }
     console.log(allFoodRecipes);
-
-    // TODO:
-    
-    // Define and show modal
-
-    // Loop through each recipe, creating card elements for each one, adding the necessary info to each card
 }
