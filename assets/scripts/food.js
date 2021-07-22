@@ -127,11 +127,8 @@ function showRecipes(recipes) {
         }
 
         allFoodRecipes.push(nextRecipe);
-        console.log(nextRecipe);
 
         // Create elements
-
-        // Section element created just for testing
         let nextSection = document.createElement("section");
 
         let nextCard = document.createElement("article");
@@ -167,7 +164,7 @@ function showRecipes(recipes) {
         nextLink.setAttribute("target", "_blank");
         nextLink.textContent = nextRecipe.url;
 
-        // Append
+        // Append all elements to their parents
         modalContentEl.appendChild(nextSection);
         nextSection.appendChild(nextCard);
         nextCard.appendChild(nextImageDiv);
