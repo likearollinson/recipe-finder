@@ -96,6 +96,8 @@ function showRecipes(recipes) {
 
         let nextImageDiv = document.createElement("div");
         nextImageDiv.setAttribute("class", "card-image");
+        nextImageDiv.setAttribute("id", i);
+        console.log(nextImageDiv);
 
         let nextFigure = document.createElement("figure");
         nextFigure.setAttribute("class", "image is-4by3");
@@ -123,9 +125,9 @@ function showRecipes(recipes) {
         nextLink.setAttribute("target", "_blank");
         nextLink.textContent = nextRecipe.url;
 
-        let recipeId = document.createElement("p");
-        recipeId.setAttribute("id", i);
-        console.log(recipeId);
+        // let recipeId = document.createElement("p");
+        // recipeId.setAttribute("id", i);
+        // console.log(recipeId);
 
         // Append
         modalContentEl.appendChild(nextSection);
@@ -141,6 +143,7 @@ function showRecipes(recipes) {
         nextMediaContent.appendChild(nextRecipeURL);
         nextRecipeURL.appendChild(nextLink);
 
+        modalContentEl.ins
 
     }
     console.log(allFoodRecipes);
