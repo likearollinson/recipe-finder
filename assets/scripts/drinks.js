@@ -49,7 +49,8 @@ function showDrinkRecipes(drinkRecipes) {
         }
 
         allFoodRecipes.push(nextRecipe);
-
+    }
+}
 console.log()
 // searchBtnEl.addEventListener("click", function() {
 //     let drinkIngredientSearch = "filter.php?i=" + seinkIngredientEl.value;

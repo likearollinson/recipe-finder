@@ -1,6 +1,8 @@
 // Element variables from food.html
 const foodSearchFormEl = document.querySelector("#food-search-form");
 const ingredientSearchInput = document.querySelector("#food-ingredient-search-input");
+const dietSelectEl = document.querySelector("#diet-select");
+const timeSelectEl = document.querySelector("#cook-time-select");
 
 // const foodDropdownTextEl = document.querySelector("#food-dropdown-text");
 // const foodDropdownItems = document.querySelectorAll(".food-dropdown-item");
@@ -12,6 +14,8 @@ const modalContentEl = document.querySelector("#modal-content-container");
 
 
 let ingredient;
+let diet;
+let time;
 
 
 // foodSearchBtn.addEventListener("click", () => {
@@ -41,10 +45,35 @@ modalBg.addEventListener("click", () => {
 // Add event listener to food search form
 foodSearchFormEl.addEventListener("submit", function(event) {
     event.preventDefault();
-    ingredient = ingredientSearchInput.value;
+
+    ingredient = ingredientSearchInput.value.trim();
+    diet = dietSelectEl.value;
+    time = timeSelectEl.value;
+    console.log(diet);
+    console.log(typeof(diet));
+    console.log(time);
+    console.log(typeof(time));
+    // if (!ingredient) {
+    //     ingredient = undefined;
+    // }
+    // if (diet === "Choose preferred diet (optional)") {
+    //     diet = undefined;
+    // }
+    // if (time === "Choose preferred cook time (optional)") {
+    //     time = undefined;
+    // } else {
+    //     if (time === "Less than 30 minutes") {
+    //         time = "30";
+    //     } else if (time === "30 minutes to one hour") {
+    //         time = "30-60";
+    //     } else {
+    //         time = "60%2B";
+    //     }
+    // }
+
     ingredientSearchInput.value = "";
     foodModal.classList.add('is-active');
-    getFoodRecipe(ingredient);
+    getFoodRecipe(ingredient, diet, time);
 })
 
 // Variables for food recipe search API
@@ -52,18 +81,61 @@ const foodURL = "https://api.edamam.com/api/recipes/v2?type=public&q=";
 const appIDKey = "&app_id=99f65177&app_key=ecb411eb41e5416150875af0c19ffec7";
 
 // Gets data from Edamam API
-function getFoodRecipe(ingredient) {
-    fetch(foodURL + ingredient + appIDKey)
-        .then(function(response) {
-            if (response.ok) {
-                return response.json();
-            }
-        })
-        .then(function(data) {
-            if (data.count !== 0) {
-                showRecipes(data.hits);
-            }
-        })
+function getFoodRecipe(ingredient, diet, time) {
+    if (diet && time) {
+        fetch(foodURL + ingredient + appIDKey + "&diet=" + diet + "&time=" + time)
+            .then(function(response) {
+                if (response.ok) {
+                    return response.json();
+                }
+            })
+            .then(function(data) {
+                if (data.count !== 0) {
+                    console.log(data);
+                    showRecipes(data.hits);
+                }
+            })
+    } else if (diet && !time) {
+        fetch(foodURL + ingredient + appIDKey + "&diet=" + diet)
+            .then(function(response) {
+                if (response.ok) {
+                    return response.json();
+                }
+            })
+            .then(function(data) {
+                if (data.count !== 0) {
+                    console.log(data);
+                    showRecipes(data.hits);
+                }
+            })
+    } else if (!diet && time) {
+        fetch(foodURL + ingredient + appIDKey + "&time=" + time)
+            .then(function(response) {
+                if (response.ok) {
+                    return response.json();
+                }
+            })
+            .then(function(data) {
+                if (data.count !== 0) {
+                    console.log(data);
+                    showRecipes(data.hits);
+                }
+            })
+    } else if (!diet && !time) {
+        fetch(foodURL + ingredient + appIDKey)
+            .then(function(response) {
+                if (response.ok) {
+                    return response.json();
+                }
+            })
+            .then(function(data) {
+                if (data.count !== 0) {
+                    console.log(data);
+                    showRecipes(data.hits);
+                }
+            })
+    }
+
 }
 
 // Display recipes on cards within modal
@@ -82,6 +154,7 @@ function showRecipes(recipes) {
         }
 
         allFoodRecipes.push(nextRecipe);
+        console.log(nextRecipe);
 
         // Create elements
 
