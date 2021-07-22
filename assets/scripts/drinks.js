@@ -47,8 +47,10 @@ function showDrinkRecipes(drinkRecipes) {
             image: recipes[i].recipe.image,
             url: recipes[i].recipe.url
         }
+    }
 
         allFoodRecipes.push(nextRecipe);
+}
 
 console.log()
 // searchBtnEl.addEventListener("click", function() {

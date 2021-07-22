@@ -61,6 +61,7 @@ function getFoodRecipe(ingredient) {
         })
         .then(function(data) {
             if (data.count !== 0) {
+                console.log(data)
                 showRecipes(data.hits);
             }
         })
@@ -78,7 +79,8 @@ function showRecipes(recipes) {
         let nextRecipe = {
             name: recipes[i].recipe.label,
             image: recipes[i].recipe.image,
-            url: recipes[i].recipe.url
+            url: recipes[i].recipe.url,
+        
         }
 
         allFoodRecipes.push(nextRecipe);
@@ -120,6 +122,10 @@ function showRecipes(recipes) {
         nextLink.setAttribute("href", nextRecipe.url);
         nextLink.setAttribute("target", "_blank");
         nextLink.textContent = nextRecipe.url;
+
+        let recipeId = document.createElement("p");
+        recipeId.setAttribute("id", i);
+        console.log(recipeId);
 
         // Append
         modalContentEl.appendChild(nextSection);
