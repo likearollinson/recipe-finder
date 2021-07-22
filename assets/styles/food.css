@@ -19,16 +19,17 @@ i.fas.fa-glass-whiskey {
   
   #food-search-button {
     background-color: rgb(17, 110, 163);
-    box-shadow: 2px 3px 4px black;
+  }
+  #food-search-button:hover {
+    box-shadow: 0px 3px 2px #DC7A4A;
   }
   #drinks-search-button {
     background-color: rgb(17, 110, 163);
-    box-shadow: 2px 3px 4px black;
+  }
+  #drinks-search-button:hover {
+    box-shadow: 0px 3px 2px #DC7A4A;
   }
   
-  h1#featured-recipes {
-    color: rgb(17, 110, 163);
-    }
-#diet-input {
-    margin-bottom: 5px;
+#food-return:hover {
+    box-shadow: 0px 4px 2px #DC7A4A;
 }
