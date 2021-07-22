@@ -50,7 +50,8 @@ function showDrinkRecipes(drinkRecipes) {
     }
 
         allFoodRecipes.push(nextRecipe);
-}
+    }
+
 
 console.log()
 // searchBtnEl.addEventListener("click", function() {
