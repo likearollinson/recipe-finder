@@ -29,7 +29,7 @@ function getDrinkIngredientRecipe(drinkIngredient) {
         .then(function(data) {
             if (data.count !== 0) {
                 showDrinkRecipes(data.hits);
-                // console.log(data.hits);
+                console.log(data);
             }
         })
 }
@@ -37,18 +37,20 @@ function getDrinkIngredientRecipe(drinkIngredient) {
 // Display recipes on cards within modal
 function showDrinkRecipes(drinkRecipes) {
     console.log(drinkRecipes);
-    let allDrinkRecipes = [];
+//     let allDrinkRecipes = [];
 
-    // Loop through recipe to create an object of necessary info for each recipe, and add it to the allFoodRecipes array
-    for (let i = 0; i < drinkRecipes.length; i++) {
+//     // Loop through recipe to create an object of necessary info for each recipe, and add it to the allFoodRecipes array
+//     for (let i = 0; i < drinkRecipes.length; i++) {
 
-        let nextDrinkRecipe = {
-            name: drinkRecipes[i].recipe.label,
-            image: recipes[i].recipe.image,
-            url: recipes[i].recipe.url
-        }
+//         let nextDrinkRecipe = {
+//             name: drinkRecipes[i].recipe.label,
+//             image: drinkRecipes[i].recipe.image,
+//             url: drinkRecipes[i].recipe.url
+//         }
 
-        allFoodRecipes.push(nextRecipe);
+//         allFoodRecipes.push(nextRecipe);
+//     }
+}
 
 console.log()
 // searchBtnEl.addEventListener("click", function() {
@@ -88,4 +90,4 @@ console.log()
 // })
 
 
-// getDrinkRecipe();
+// getDrinkRecipe()
