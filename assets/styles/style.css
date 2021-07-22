@@ -15,7 +15,7 @@ h2 {
   color: rgb(17, 110, 163);
 }
 .card {
-  border: 2px double black;
+  border: 2px double rgb(49, 49, 49);
 }
 
 #food-search-button {
