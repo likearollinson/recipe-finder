@@ -1,4 +1,30 @@
+/* Styles for landing page */
 i.fas.fa-glass-whiskey {
   color: rgb(17, 110, 163);
   font-size: 2.5rem;
 }
+h2 {
+  color:rgb(17, 110, 163);
+}
+
+.featured-food {
+  color: rgb(17, 110, 163);
+  
+}
+.featured-drink {
+  color: rgb(17, 110, 163);
+}
+.card {
+  border: 2px double black;
+}
+
+#food-search-button {
+  background-color: rgb(17, 110, 163);
+}
+#drinks-search-button {
+  background-color: rgb(17, 110, 163);
+}
+
+h1#featured-recipes {
+  color: rgb(17, 110, 163);
+  }
