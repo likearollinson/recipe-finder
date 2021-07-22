@@ -6,4 +6,3 @@ const drinksButton = document.querySelector("#drinks-search-button");
 
 
 
-

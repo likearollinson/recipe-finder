@@ -2,49 +2,50 @@
 const foodSearchFormEl = document.querySelector("#food-search-form");
 const ingredientSearchInput = document.querySelector("#food-ingredient-search-input");
 
-const foodDropdownTextEl = document.querySelector("#food-dropdown-text");
-const foodDropdownItems = document.querySelectorAll(".food-dropdown-item");
+// const foodDropdownTextEl = document.querySelector("#food-dropdown-text");
+// const foodDropdownItems = document.querySelectorAll(".food-dropdown-item");
+
+const foodModal = document.querySelector("#food-modal");
+const modalCloseBtn = document.querySelector("#close-modal");
+const modalBg = document.querySelector(".modal-background");
+const modalContentEl = document.querySelector("#modal-content-container");
+
 
 let ingredient;
 
-const foodSearchBtn = document.getElementById("food-return");
-const modalCloseBtn = document.getElementById("close-modal");
-const modalBg = document.querySelector(".modal-background");
-const modal = document.querySelector(".modal");
 
-foodSearchBtn.addEventListener("click", () => {
-    modal.classList.add('is-active');
-})
+// foodSearchBtn.addEventListener("click", () => {
+//     modal.classList.add('is-active');
+// })
 
+
+// Add event listeners to close modal
 modalCloseBtn.addEventListener("click", () => {
-    modal.classList.remove('is-active');
+    foodModal.classList.remove('is-active');
 })
 
 modalBg.addEventListener("click", () => {
-    modal.classList.remove('is-active');
+    foodModal.classList.remove('is-active');
 })
 
 
 // Event listener for dropdown menu to change text upon selection
-for (let i = 0; i < foodDropdownItems.length; i++) {
-    foodDropdownItems[i].addEventListener("click", function(event) {
-        event.preventDefault();
-        foodDropdownTextEl.textContent = event.target.textContent;
-    })
-}
+// for (let i = 0; i < foodDropdownItems.length; i++) {
+//     foodDropdownItems[i].addEventListener("click", function(event) {
+//         event.preventDefault();
+//         foodDropdownTextEl.textContent = event.target.textContent;
+//     })
+// }
 
 
-// Adds conditional to prevent errors on landing page
-if (foodSearchFormEl !== null) {
-    foodSearchFormEl.addEventListener("submit", function(event) {
-        event.preventDefault();
-        ingredient = ingredientSearchInput.value;
-        ingredientSearchInput.value = "";
-        modal.classList.add('is-active');
-        
-        
-    })
-}
+// Add event listener to food search form
+foodSearchFormEl.addEventListener("submit", function(event) {
+    event.preventDefault();
+    ingredient = ingredientSearchInput.value;
+    ingredientSearchInput.value = "";
+    foodModal.classList.add('is-active');
+    getFoodRecipe(ingredient);
+})
 
 // Variables for food recipe search API
 const foodURL = "https://api.edamam.com/api/recipes/v2?type=public&q=";
@@ -69,6 +70,7 @@ function getFoodRecipe(ingredient) {
 function showRecipes(recipes) {
     console.log(recipes);
     let allFoodRecipes = [];
+    modalContentEl.innerHTML = "";
 
     // Loop through recipe to create an object of necessary info for each recipe, and add it to the allFoodRecipes array
     for (let i = 0; i < recipes.length; i++) {
@@ -88,6 +90,7 @@ function showRecipes(recipes) {
 
         let nextCard = document.createElement("article");
         nextCard.setAttribute("class", "card");
+        nextCard.setAttribute("style", "margin-bottom: 1em");
 
         let nextImageDiv = document.createElement("div");
         nextImageDiv.setAttribute("class", "card-image");
@@ -115,8 +118,11 @@ function showRecipes(recipes) {
         nextRecipeURL.setAttribute("class", "subtitle is-6 has-text-black");
         let nextLink = document.createElement("a");
         nextLink.setAttribute("href", nextRecipe.url);
+        nextLink.setAttribute("target", "_blank");
+        nextLink.textContent = nextRecipe.url;
 
         // Append
+        modalContentEl.appendChild(nextSection);
         nextSection.appendChild(nextCard);
         nextCard.appendChild(nextImageDiv);
         nextCard.appendChild(nextCardContentDiv);
@@ -127,8 +133,7 @@ function showRecipes(recipes) {
         nextMediaDiv.appendChild(nextMediaContent);
         nextMediaContent.appendChild(nextRecipeName);
         nextMediaContent.appendChild(nextRecipeURL);
-
-        nextSection.style.display = "block";
+        nextRecipeURL.appendChild(nextLink);
 
 
     }
