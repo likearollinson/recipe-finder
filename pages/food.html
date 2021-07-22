@@ -20,7 +20,7 @@
 
 <body>
   <!-- Navbar -->
-  <nav class="navbar is-light" role="navigation" aria-label="main navigation">
+  <nav class="navbar pb-3 pt-3" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <a class="navbar-item" href="../index.html">
         <i class="fas fa-glass-whiskey" style="color: rgb(17, 110, 163); font-size: 2.5rem">
@@ -40,12 +40,7 @@
       </a>
     </div>
 
-    <!-- <div id="navbarBasicExample" class="navbar-menu">
-          <div class="navbar-start">
-            <a class="navbar-item"> <strong>Home</strong> </a>
-  
-            <a class="navbar-item"> <strong>Mission</strong> </a>
-          </div> -->
+    
 
     <div class="navbar-end">
       <div class="navbar-item">
@@ -75,7 +70,8 @@
         <form id="food-search-form">
           <label class="has-text-primary is-size-3"><strong>Ingredient</strong></label>
             <input id="food-ingredient-search-input" class="input" type="text" placeholder="Search by ingredient" required>
-          <br><br>
+          <br>
+         
           <label id="diet-input" class="has-text-primary is-size-3"><strong>Diet</strong></label>
           <br>
           <div class="select is-primary">
@@ -89,7 +85,7 @@
               <option value="low-sodium">Low Sodium</option>
             </select>
           </div>          
-          <br><br>
+          <br>
 
           <label class="has-text-primary is-size-3"><strong>Cook Time</strong></label><br>
 
@@ -101,25 +97,9 @@
               <option value="60%2B">More than one hour</option>
             </select>
           </div>
-            <!-- <div class="dropdown is-right is-hoverable">
-              <div class="dropdown-trigger">
-                <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-                  <span id="food-dropdown-text">Choose your preferred cook time</span>
-                  <span class="icon is-small">
-                    <i class="fa fa-angle-down" aria-hidden="true"></i>
-                  </span>
-                </button>
-              </div>
-              <div class="dropdown-menu" id="food-dropdown-menu" role="menu">
-                <div class="dropdown-content">
-                  <a class="dropdown-item food-dropdown-item">30 minutes</a>
-                  <a class="dropdown-item food-dropdown-item">45 minutes</a>
-                  <a class="dropdown-item food-dropdown-item">60+ minutes</a>
-                </div>
-              </div>
-            </div> -->
-            <br><br>
-            <button class="button is-large is-fullwidth is-success" type="submit" id="food-return">Search</button>
+            
+            
+            <button class="button is-large is-fullwidth is-success mt-5" type="submit" id="food-return">Search</button>
         </form>
       </section>
     </div>

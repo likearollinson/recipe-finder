@@ -20,9 +20,11 @@ h2 {
 
 #food-search-button {
   background-color: rgb(17, 110, 163);
+  box-shadow: 2px 3px 4px black;
 }
 #drinks-search-button {
   background-color: rgb(17, 110, 163);
+  box-shadow: 2px 3px 4px black;
 }
 
 h1#featured-recipes {
