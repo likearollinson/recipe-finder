@@ -14,19 +14,22 @@ let alcoholicSearchInputEl = document.querySelector("#alcoholic");
 let drinkIngredient;
 
 // Add event listeners to close modal
-modalCloseBtn.addEventListener("click", () => {
-    drinkModal.classList.remove('is-active');
-})
+// modalBg.addEventListener("click", () => {
+//     drinkModal.classList.remove('is-active');
+// })
 
-modalBg.addEventListener("click", () => {
-    drinkModal.classList.remove('is-active');
-})
+// modalCloseBtn.addEventListener("click", () => {
+//     drinkModal.classList.remove('is-active');
+// })
+
+
 
 if (drinkSearchFormEl !== null) {
     drinkSearchFormEl.addEventListener("submit", function(event) {
         event.preventDefault();
         drinkIngredient = drinkIngredientSearchInputEl.value;
         drinkIngredientSearchInputEl.value = "";
+        drinkModal.classList.add('is-active');
         getDrinkIngredientInfo(drinkIngredient);
     })
 }
