@@ -137,6 +137,8 @@ function showRecipes(recipes) {
 
         let nextImageDiv = document.createElement("div");
         nextImageDiv.setAttribute("class", "card-image");
+        nextImageDiv.setAttribute("id", i);
+        console.log(nextImageDiv);
 
         let nextFigure = document.createElement("figure");
         nextFigure.setAttribute("class", "image is-4by3");
@@ -164,6 +166,8 @@ function showRecipes(recipes) {
         nextLink.setAttribute("target", "_blank");
         nextLink.textContent = nextRecipe.url;
 
+
+
         // Append all elements to their parents
         modalContentEl.appendChild(nextSection);
         nextSection.appendChild(nextCard);
@@ -177,8 +181,11 @@ function showRecipes(recipes) {
         nextMediaContent.appendChild(nextRecipeName);
         nextMediaContent.appendChild(nextRecipeURL);
         nextRecipeURL.appendChild(nextLink);
+        
 
-
+        
     }
     console.log(allFoodRecipes);
+
+
 }

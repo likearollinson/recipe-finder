@@ -83,6 +83,7 @@ function showDrinkRecipes(drinkRecipes) {
                     }
                 })
         }
+    }
 
         // Create elements
         let nextSection = document.createElement("section");
@@ -124,5 +125,7 @@ function showDrinkRecipes(drinkRecipes) {
         nextMediaDiv.appendChild(nextMediaContent);
         nextMediaContent.appendChild(nextRecipeName);;
 
-    }
+        nextSection.style.display = "block";
+    
+    
 }
