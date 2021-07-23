@@ -166,6 +166,9 @@ function showRecipes(recipes) {
         nextLink.setAttribute("target", "_blank");
         nextLink.textContent = nextRecipe.url;
 
+        // let recipeSaveButton = document.creatElememt("button");
+        // recipeSaveButton.setAttribute("button", "Save this Recipe");
+
         // Append all elements to their parents
         modalContentEl.appendChild(nextSection);
         nextSection.appendChild(nextCard);
@@ -179,6 +182,7 @@ function showRecipes(recipes) {
         nextMediaContent.appendChild(nextRecipeName);
         nextMediaContent.appendChild(nextRecipeURL);
         nextRecipeURL.appendChild(nextLink);
+        // nextRecipeURL.appendChild(recipeSaveButton);
 
         
     }

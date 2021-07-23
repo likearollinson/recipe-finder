@@ -109,7 +109,7 @@ function showDrinkRecipes(drinkRecipes) {
         nextMediaContent.appendChild(nextRecipeName);;
 
         nextSection.style.display = "block";
-
+    
     
 }
 
