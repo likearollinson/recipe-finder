@@ -15,6 +15,9 @@ let ingredient;
 let diet;
 let time;
 
+// local storage section
+
+
 
 // Add event listeners to close modal
 modalCloseBtn.addEventListener("click", () => {
@@ -125,7 +128,7 @@ function showRecipes(recipes) {
             image: recipes[i].recipe.image,
             url: recipes[i].recipe.url
         }
-
+        
         allFoodRecipes.push(nextRecipe);
 
         // Create elements
@@ -137,8 +140,8 @@ function showRecipes(recipes) {
 
         let nextImageDiv = document.createElement("div");
         nextImageDiv.setAttribute("class", "card-image");
-        nextImageDiv.setAttribute("id", i);
-        console.log(nextImageDiv);
+        // nextImageDiv.setAttribute("id", i);
+        // // console.log(nextImageDiv);
 
         let nextFigure = document.createElement("figure");
         nextFigure.setAttribute("class", "image is-4by3");
@@ -166,6 +169,12 @@ function showRecipes(recipes) {
         nextLink.setAttribute("target", "_blank");
         nextLink.textContent = nextRecipe.url;
 
+        let saveButton = document.createElement("button");
+        saveButton.setAttribute("type", "submit");
+        saveButton.setAttribute("id", i);
+        console.log(saveButton);
+        saveButton.innerHTML = "SAVE ME!";
+
 
 
         // Append all elements to their parents
@@ -177,15 +186,34 @@ function showRecipes(recipes) {
         nextFigure.appendChild(nextImage);
         
         nextCardContentDiv.appendChild(nextMediaDiv);
+
+        nextCardContentDiv.appendChild(saveButton);
+
         nextMediaDiv.appendChild(nextMediaContent);
         nextMediaContent.appendChild(nextRecipeName);
         nextMediaContent.appendChild(nextRecipeURL);
         nextRecipeURL.appendChild(nextLink);
         
+        saveButton.onclick = function(event) {
+            event.preventDefault();
+            console.log(saveButton.id)
+            if (saveButton.id == 0){
+               
+            }
+           
+        } 
 
         
     }
     console.log(allFoodRecipes);
+    // console.log(document.getElementById("1").id)
 
+    //  saveButton.addEventListener("submit", function(event) {
+    //      event.preventDefault();
+
+    //     console.log("Hello");
+    //  }) 
+
+    
 
 }
