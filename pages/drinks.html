@@ -14,13 +14,13 @@
 
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
     integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-  <link rel="stylesheet" href="bulma.css" />
+  <link rel="stylesheet" href="../assets/styles/drinks.css" />
   <title>Drinks Search Page</title>
 </head>
 
 <body>
   <!-- Navbar -->
-  <nav class="navbar is-light" role="navigation" aria-label="main navigation">
+  <nav class="navbar pb-3 pt-3" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <a class="navbar-item" href="../index.html">
         <i class="fas fa-glass-whiskey" style="color: rgb(17, 110, 163); font-size: 2.5rem">
@@ -40,12 +40,7 @@
       </a>
     </div>
 
-    <!-- <div id="navbarBasicExample" class="navbar-menu">
-          <div class="navbar-start">
-            <a class="navbar-item"> <strong>Home</strong> </a>
-  
-            <a class="navbar-item"> <strong>Mission</strong> </a>
-          </div> -->
+    
 
     <div class="navbar-end">
       <div class="navbar-item">
@@ -72,18 +67,16 @@
         Find the perfect cocktail or mocktail in minutes!
       </p>
       <section class="section">
-        <h1 class="title">Narrow down your search by focusing on ingredients, type of alcohol, or filter drinks by
-          alcohol.</h1>
         <form id="drink-search-form">  
-          <label class="has-text-primary is-size-3"><strong>Alcohol/Ingredient</strong>
+          <label class="has-text-primary is-size-3 mb-5"><strong>Alcohol/Ingredient</strong>
             <input class="input"  id="drink-ingredient" type="text" placeholder="Search by alcohol or ingredient">
           </label>
           <label class="has-text-primary is-size-3"><strong>Cocktail Name</strong>
-            <input class="input" type="text" placeholder="Search by cocktail name">
+            <input class="input mb-5" type="text" placeholder="Search by cocktail name">
           </label>
-            <button class="button is-large is-fullwidth is-success" type="submit">Search</button>
+            <button class="button is-large is-fullwidth is-success mb-5" id="search-drinks" type="submit">Search</button>
           </form>
-        <button class="button  is-large is-fullwidth is-info" type="submit">IDK, Tell Me What to Drink!</button>    
+        <button class="button is-large is-fullwidth is-info" id="random-drinks" type="submit">IDK, Tell Me What to Drink!</button>    
     </div>
   </section>
   <div id=“drink-modal” class=“modal is-clipped”>
