@@ -8,7 +8,7 @@ const modalContentEl = document.querySelector("#drink-modal-content-container");
 const drinkSearchFormEl = document.querySelector("#drink-search-form");
 const randomDrinkSearchBtn = document.querySelector("#random-drinks");
 let drinkIngredientSearchInputEl = document.querySelector("#drink-ingredient");
-let cocktailNameSearchInputEl = document.querySelector("#cocktail-name");
+let cocktailNameSearchInputEl = document.querySelector("#cocktail-search");
 
 // const searchBtnEl = document.querySelector("#search-btn");
 
@@ -24,6 +24,23 @@ modalCloseBtn.addEventListener("click", () => {
     drinkModal.classList.remove("is-active");
 })
 
+
+drinkIngredientSearchInputEl.addEventListener("blur", function() {
+    console.log("works");
+    if (drinkIngredientSearchInputEl.value.trim().length !== 0) {
+        cocktailNameSearchInputEl.disabled = true;
+    } else {
+        cocktailNameSearchInputEl.disabled = false;
+    }
+})
+
+cocktailNameSearchInputEl.addEventListener("blur", function() {
+    if (cocktailNameSearchInputEl.value.trim() !== "") {
+        drinkIngredientSearchInputEl.disabled = true;
+    } else {
+        drinkIngredientSearchInputEl.disabled = false;
+    }
+})
 
 
 drinkSearchFormEl.addEventListener("submit", function (event) {
