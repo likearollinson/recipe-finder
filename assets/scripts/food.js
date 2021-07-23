@@ -180,7 +180,9 @@ function showRecipes(recipes) {
         nextMediaContent.appendChild(nextRecipeURL);
         nextRecipeURL.appendChild(nextLink);
 
-
+        
     }
     console.log(allFoodRecipes);
+
+
 }
