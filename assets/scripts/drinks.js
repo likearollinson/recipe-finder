@@ -13,6 +13,15 @@ let alcoholicSearchInputEl = document.querySelector("#alcoholic");
 
 let drinkIngredient;
 
+// Add event listeners to close modal
+modalCloseBtn.addEventListener("click", () => {
+    drinkModal.classList.remove('is-active');
+})
+
+modalBg.addEventListener("click", () => {
+    drinkModal.classList.remove('is-active');
+})
+
 if (drinkSearchFormEl !== null) {
     drinkSearchFormEl.addEventListener("submit", function(event) {
         event.preventDefault();
@@ -21,6 +30,8 @@ if (drinkSearchFormEl !== null) {
         getDrinkIngredientInfo(drinkIngredient);
     })
 }
+
+
 
 function getDrinkIngredientInfo(drinkIngredient) {
     fetch(drinkURL + "filter.php?i=" + drinkIngredient)
@@ -41,6 +52,8 @@ function getDrinkIngredientInfo(drinkIngredient) {
 function showDrinkRecipes(drinkRecipes) {
     console.log(drinkRecipes);
     let allDrinkRecipes = [];
+    modalContentEl.innerHTML = "";
+
     // Loop through recipe to create an object of necessary info for each recipe, and add it to the allFoodRecipes array
     for (let i = 0; i < allDrinkRecipes.length; i++) {
 
@@ -68,7 +81,7 @@ function showDrinkRecipes(drinkRecipes) {
         }
 
         // Create elements
-        let newSection = document.createElement("section");
+        let nextSection = document.createElement("section");
 
         let nextCard = document.createElement("article");
         nextCard.setAttribute("class", "card");
@@ -96,7 +109,7 @@ function showDrinkRecipes(drinkRecipes) {
         nextRecipeName.textContent = nextDrinkRecipe.name;
 
         // Append
-        modalConentEl.appendChild(newSection)
+        modalContentEl.appendChild(nextSection);
         nextSection.appendChild(nextCard);
         nextCard.appendChild(nextImageDiv);
         nextCard.appendChild(nextCardContentDiv);
