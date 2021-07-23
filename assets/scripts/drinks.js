@@ -15,11 +15,11 @@ let drinkIngredient;
 
 // Add event listeners to close modal
 modalBg.addEventListener("click", () => {
-    drinkModal.classList.remove('is-active');
+    drinkModal.classList.remove("is-active");
 })
 
 modalCloseBtn.addEventListener("click", () => {
-    drinkModal.classList.remove('is-active');
+    drinkModal.classList.remove("is-active");
 })
 
 
@@ -28,7 +28,7 @@ drinkSearchFormEl.addEventListener("submit", function (event) {
     event.preventDefault();
     drinkIngredient = drinkIngredientSearchInputEl.value;
     drinkIngredientSearchInputEl.value = "";
-    drinkModal.classList.add('is-active');
+    drinkModal.classList.add("is-active");
     getDrinkIngredientInfo(drinkIngredient);
 })
 
