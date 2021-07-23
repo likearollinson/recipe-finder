@@ -1,49 +1,50 @@
-const drinkURL = "https://thecocktaildb.com/api/json/v1/1/";
+// Variables from elements in drinks.html
 const drinkSearchFormEl = document.querySelector("#drink-search-form");
 const drinkModal = document.querySelector("#drink-modal");
-const modalCloseBtn = document.querySelector("#close-modal");
-const modalBg = document.querySelector(".modal-background");
-const modalContentEl = document.querySelector("#modal-content-container");
+const modalCloseBtn = document.querySelector("#close-drink-modal");
+const modalBg = document.querySelector("#drink-modal-background");
+const modalContentEl = document.querySelector("#drink-modal-content-container");
 
 let drinkIngredientSearchInputEl = document.querySelector("#drink-ingredient");
 let cocktailNameSearchInputEl = document.querySelector("#cocktail-name");
-let alcoholicSearchInputEl = document.querySelector("#alcoholic");
 
 // const searchBtnEl = document.querySelector("#search-btn");
 
 let drinkIngredient;
 
+
 // Add event listeners to close modal
-// modalBg.addEventListener("click", () => {
-//     drinkModal.classList.remove('is-active');
-// })
+modalBg.addEventListener("click", () => {
+    drinkModal.classList.remove("is-active");
+})
 
-// modalCloseBtn.addEventListener("click", () => {
-//     drinkModal.classList.remove('is-active');
-// })
+modalCloseBtn.addEventListener("click", () => {
+    drinkModal.classList.remove("is-active");
+})
 
 
 
-if (drinkSearchFormEl !== null) {
-    drinkSearchFormEl.addEventListener("submit", function(event) {
-        event.preventDefault();
-        drinkIngredient = drinkIngredientSearchInputEl.value;
-        drinkIngredientSearchInputEl.value = "";
-        drinkModal.classList.add('is-active');
-        getDrinkIngredientInfo(drinkIngredient);
-    })
-}
+drinkSearchFormEl.addEventListener("submit", function (event) {
+    event.preventDefault();
+    drinkIngredient = drinkIngredientSearchInputEl.value;
+    drinkIngredientSearchInputEl.value = "";
+    drinkModal.classList.add("is-active");
+    getDrinkIngredientInfo(drinkIngredient);
+})
 
+
+// URL for fetching drinks API data
+const drinkURL = "https://thecocktaildb.com/api/json/v1/1/";
 
 
 function getDrinkIngredientInfo(drinkIngredient) {
     fetch(drinkURL + "filter.php?i=" + drinkIngredient)
-        .then(function(response) {
+        .then(function (response) {
             if (response.ok) {
                 return response.json();
             }
         })
-        .then(function(data) {
+        .then(function (data) {
             if (data.count !== 0) {
                 showDrinkRecipes(data);
                 console.log(data);
@@ -57,7 +58,7 @@ function showDrinkRecipes(drinkRecipes) {
     let allDrinkRecipes = [];
     modalContentEl.innerHTML = "";
 
-    // Loop through recipe to create an object of necessary info for each recipe, and add it to the allFoodRecipes array
+    // Loop through recipe to create an object of necessary info for each recipe, and add it to the allDrinkRecipes array
     for (let i = 0; i < allDrinkRecipes.length; i++) {
 
         let nextDrinkRecipe = {
@@ -70,12 +71,12 @@ function showDrinkRecipes(drinkRecipes) {
 
         function getDrinkIngredientRecipe(drinkIngredient) {
             fetch(drinkURL + "lookup.php?i=" + drinkIngredient)
-                .then(function(response) {
+                .then(function (response) {
                     if (response.ok) {
                         return response.json();
                     }
                 })
-                .then(function(data) {
+                .then(function (data) {
                     if (data.count !== 0) {
                         showDrinkRecipes(data);
                         console.log(data);
@@ -94,7 +95,7 @@ function showDrinkRecipes(drinkRecipes) {
 
         let nextFigure = document.createElement("figure");
         nextFigure.setAttribute("class", "image is-4by3");
-        
+
         let nextImage = document.createElement("img");
         nextImage.setAttribute("src", nextDrinkRecipe.image);
 
@@ -118,15 +119,10 @@ function showDrinkRecipes(drinkRecipes) {
         nextCard.appendChild(nextCardContentDiv);
         nextImageDiv.appendChild(nextFigure);
         nextFigure.appendChild(nextImage);
-        
+
         nextCardContentDiv.appendChild(nextMediaDiv);
         nextMediaDiv.appendChild(nextMediaContent);
         nextMediaContent.appendChild(nextRecipeName);;
 
-        nextSection.style.display = "block";
-
-
     }
 }
-
-// getDrinkRecipe()
