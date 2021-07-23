@@ -61,25 +61,24 @@
       background-image: url(../assets/images/background-food.jpg);
       background-size:cover;
       background-repeat: no-repeat;
-      background-blend-mode: soft-light;">
-
-      <div class="hero-body">
-        <p class="title has-text-centered is-size-2 has-text-primary">
-          Drink Recipe Search
-        </p>
-        <p class="subtitle has-text-centered is-size-3">
-          Find the perfect cocktail or mocktail in minutes!
-        </p>
-        <section class="section">
-          <form id="drink-search-form">
-            <label class="has-text-primary is-size-3 mb-5"><strong>Alcohol/Ingredient</strong>
-              <input class="input" id="drink-ingredient" type="text" placeholder="Search by alcohol or ingredient">
-            </label>
-            <label class="has-text-primary is-size-3"><strong>Cocktail Name</strong>
-              <input class="input mb-5" type="text" placeholder="Search by cocktail name">
-            </label>
-            <button class="button is-large is-fullwidth is-success mb-5" id="search-drinks"
-              type="submit">Search</button>
+      background-blend-mode: soft-light;
+    ">
+    <div class="hero-body">
+      <p class="title has-text-centered is-size-2 has-text-primary" id="drink-hero-banner">
+        Drink Recipe Search
+      </p>
+      <p class="subtitle has-text-centered is-size-3" id="drink-hero-subtitle">
+        Find the perfect cocktail or mocktail in minutes!
+      </p>
+      <section class="section">
+        <form id="drink-search-form">  
+          <label class="has-text-primary is-size-3 mb-5" id="alcohol"><strong>Alcohol/Ingredient</strong>
+            <input class="input"  id="drink-ingredient" type="text" placeholder="Search by alcohol or ingredient">
+          </label>
+          <label class="has-text-primary is-size-3" id="cocktail-name"><strong>Cocktail Name</strong>
+            <input class="input mb-5" type="text" placeholder="Search by cocktail name">
+          </label>
+            <button class="button is-large is-fullwidth is-success mb-5" id="search-drinks" type="submit">Search</button>
           </form>
           <button class="button is-large is-fullwidth is-info" id="random-drinks" type="submit">IDK, Tell Me What to
             Drink!</button>
