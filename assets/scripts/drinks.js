@@ -24,7 +24,7 @@ modalCloseBtn.addEventListener("click", () => {
     drinkModal.classList.remove("is-active");
 })
 
-
+// Add event listeners to make sure only one search parameter can be used (API limitation)
 drinkIngredientSearchInputEl.addEventListener("blur", function() {
     console.log("works");
     if (drinkIngredientSearchInputEl.value.trim().length !== 0) {
@@ -46,9 +46,15 @@ cocktailNameSearchInputEl.addEventListener("blur", function() {
 drinkSearchFormEl.addEventListener("submit", function (event) {
     event.preventDefault();
     drinkIngredient = drinkIngredientSearchInputEl.value.trim();
+    cocktailName = cocktailNameSearchInputEl.value.trim();
     drinkIngredientSearchInputEl.value = "";
+    cocktailNameSearchInputEl.value = "";
     drinkModal.classList.add("is-active");
-    getDrinkIngredientInfo(drinkIngredient);
+    if (drinkIngredient) {
+        getDrinkFromIngredient(drinkIngredient);
+    } else if (cocktailName) {
+        getDrinkFromName(cocktailName);
+    }
 })
 
 randomDrinkSearchBtn.addEventListener("click", function(event) {
@@ -62,7 +68,7 @@ randomDrinkSearchBtn.addEventListener("click", function(event) {
 const drinkURL = "https://thecocktaildb.com/api/json/v1/1/";
 
 
-function getDrinkIngredientInfo(drinkIngredient) {
+function getDrinkFromIngredient(drinkIngredient) {
     fetch(drinkURL + "filter.php?i=" + drinkIngredient)
         .then(function (response) {
             if (response.ok) {
@@ -80,6 +86,27 @@ function getDrinkIngredientInfo(drinkIngredient) {
             invalidIngredient(drinkIngredient);
         })
 }
+
+
+function getDrinkFromName(cocktailName) {
+    fetch(drinkURL + "search.php?s=" + cocktailName)
+        .then(function (response) {
+            if (response.ok) {
+                return response.json();
+            }
+        })
+        .then(function (data) {
+            if (data.count !== 0) {
+                console.log(data);
+                showDrinkRecipes(data.drinks);
+            }
+        })
+        .catch(function (error) {
+            console.log(error);
+            invalidIngredient(drinkIngredient);
+        })
+}
+
 
 function getRandomDrinkRecipe() {
     fetch(drinkURL + "random.php")
@@ -101,7 +128,11 @@ function invalidIngredient(drinkIngredient) {
     errorDiv.setAttribute("class", "card-content");
     let errorMessage = document.createElement("p");
     errorMessage.setAttribute("class", "title is-4 has-text-black");
-    errorMessage.textContent = "Sorry, there were no cocktails found with that ingredient.";
+    if (drinkIngredient) {
+        errorMessage.textContent = "Sorry, there were no cocktails found with that ingredient.";
+    } else if (cocktailName) {
+        errorMessage.textContent = "Sorry, there were no cocktails found with that name.";
+    }
 
     modalContentEl.appendChild(errorMessageContainer);
     errorMessageContainer.appendChild(errorDiv);
