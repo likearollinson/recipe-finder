@@ -30,21 +30,13 @@ i.fas.fa-glass-whiskey {
     box-shadow: 0px 3px 2px #DC7A4A;
   }
   
-#food-return:hover {
-    box-shadow: 0px 4px 2px #DC7A4A;
-}
-#ingredient {
-    text-shadow: 0px 2px 5px black;
-}
-#diet-input {
-    text-shadow: 0px 2px 5px black;
-}
-#cook-time {
-    text-shadow: 0px 2px 5px black;
-}
-#food-hero-banner {
-    text-shadow: 0px 2px 5px black;
-}
-#food-hero-subtitle {
-    text-shadow: 0px 2px 5px black;
-}
+  h1#featured-recipes {
+    color: rgb(17, 110, 163);
+    }
+
+    #search-drinks:hover {
+        box-shadow: 0px 3px 2px #DC7A4A;
+    }
+    #random-drinks:hover {
+        box-shadow: 0px 3px 2px #DC7A4A;
+    }
