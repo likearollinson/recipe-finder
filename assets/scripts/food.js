@@ -57,7 +57,7 @@ foodSearchFormEl.addEventListener("submit", function(event) {
 
 clearFavoritesBtn.addEventListener("click", function(event) {
     event.preventDefault();
-    localStorage.clear();
+    localStorage.removeItem("userFoodFavorites");
     savedFood = [];
     showFavorites(savedFood);
 })
