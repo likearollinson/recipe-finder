@@ -222,6 +222,14 @@ function showDrinkRecipes(drinkRecipes) {
         nextLink.setAttribute("target", "_blank");
         nextLink.textContent = thisDrinkURL;
 
+        let saveButton = document.createElement("button");
+        // saveButton.setAttribute("type", "submit");
+        saveButton.setAttribute("class", "button is-info");
+        saveButton.textContent = "SAVE ME!";
+
+        // saveButton.setAttribute("data-index", i);
+        // console.log(saveButton);
+
         // Append
         modalContentEl.appendChild(nextCard);
         nextCard.appendChild(nextImageDiv);
@@ -230,11 +238,14 @@ function showDrinkRecipes(drinkRecipes) {
         nextFigure.appendChild(nextImage);
 
         nextCardContentDiv.appendChild(nextMediaDiv);
+        nextCardContentDiv.appendChild(saveButton);
         nextMediaDiv.appendChild(nextMediaContent);
         nextMediaContent.appendChild(nextRecipeName);
         nextMediaContent.appendChild(nextRecipeURL);
         nextRecipeURL.appendChild(nextLink);
+        
 
+        
     }
     console.log(allDrinkRecipes);
 }
