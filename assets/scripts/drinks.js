@@ -242,12 +242,6 @@ function showDrinkRecipes(drinkRecipes) {
         saveButton.setAttribute("class", "button is-info");
         saveButton.textContent = "SAVE ME!";
 
-<<<<<<< HEAD
-        // saveButton.setAttribute("data-index", i);
-        // console.log(saveButton);
-
-=======
->>>>>>> 125f0518ce0e096119dbdd1abb59f5fd01dd7449
         // Append
         modalContentEl.appendChild(nextCard);
         nextCard.appendChild(nextImageDiv);
@@ -261,9 +255,6 @@ function showDrinkRecipes(drinkRecipes) {
         nextMediaContent.appendChild(nextRecipeName);
         nextMediaContent.appendChild(nextRecipeURL);
         nextRecipeURL.appendChild(nextLink);
-<<<<<<< HEAD
-        
-=======
         nextCardContentDiv.appendChild(saveButton);
 
         saveButton.addEventListener("click", function(event) {
@@ -279,7 +270,6 @@ function showDrinkRecipes(drinkRecipes) {
                 showFavorites(savedDrinks);
             }
         })
->>>>>>> 125f0518ce0e096119dbdd1abb59f5fd01dd7449
 
         
     }
