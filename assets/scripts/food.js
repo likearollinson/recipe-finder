@@ -170,10 +170,12 @@ function showRecipes(recipes) {
         nextLink.textContent = nextRecipe.url;
 
         let saveButton = document.createElement("button");
-        saveButton.setAttribute("type", "submit");
-        saveButton.setAttribute("data-index", i);
+        // saveButton.setAttribute("type", "submit");
+        saveButton.setAttribute("class", "button is-info");
+        saveButton.textContent = "SAVE ME!";
+
+        // saveButton.setAttribute("data-index", i);
         console.log(saveButton);
-        saveButton.innerHTML = "SAVE ME!";
 
 
 
@@ -187,24 +189,26 @@ function showRecipes(recipes) {
         
         nextCardContentDiv.appendChild(nextMediaDiv);
 
-        nextCardContentDiv.appendChild(saveButton);
 
         nextMediaDiv.appendChild(nextMediaContent);
         nextMediaContent.appendChild(nextRecipeName);
         nextMediaContent.appendChild(nextRecipeURL);
         nextRecipeURL.appendChild(nextLink);
+        nextCardContentDiv.appendChild(saveButton);
+
         
         saveButton.addEventListener("click", function(event) {
             event.preventDefault();
-            
-            console.log(event.target.parentNode)
-            savedFood.push(allFoodRecipes[i]);
-        //    let savedFood = allFoodRecipes[i];
-        localStorage.setItem("userFavorites", JSON.stringify(savedFood));
-        //    console.log(savedFood);
-           // allFoodRecipes[saveButton.getAttribute("data-index")]
-           saveButton.innerHTML = "SAVED";
-        }  )
+            if (saveButton.textContent !== "SAVED") {
+                console.log(event.target.parentNode)
+                console.log("hey");
+                savedFood.push(allFoodRecipes[i]);
+                localStorage.setItem("userFavorites", JSON.stringify(savedFood));
+
+                saveButton.setAttribute("class", "button is-success");
+                saveButton.textContent = "SAVED";
+            }
+        })
            
         //  = function(event) {
         //     event.preventDefault();
