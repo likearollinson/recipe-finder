@@ -18,10 +18,12 @@ let drinkIngredient;
 // Add event listeners to close modal
 modalBg.addEventListener("click", () => {
     drinkModal.classList.remove("is-active");
+    modalContentEl.innerHTML = "";
 })
 
 modalCloseBtn.addEventListener("click", () => {
     drinkModal.classList.remove("is-active");
+    modalContentEl.innerHTML = "";
 })
 
 // Add event listeners to make sure only one search parameter can be used (API limitation)
@@ -143,7 +145,6 @@ function invalidIngredient(drinkIngredient) {
 function showDrinkRecipes(drinkRecipes) {
     console.log(drinkRecipes);
     let allDrinkRecipes = [];
-    modalContentEl.innerHTML = "";
 
     // Loop through recipe to create an object of necessary info for each recipe, and add it to the allDrinkRecipes array
     for (let i = 0; i < drinkRecipes.length; i++) {

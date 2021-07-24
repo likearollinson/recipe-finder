@@ -25,10 +25,12 @@ let savedFood = JSON.parse(localStorage.getItem("userFavorites") || "[]");
 // Add event listeners to close modal
 modalCloseBtn.addEventListener("click", () => {
     foodModal.classList.remove('is-active');
+    modalContentEl.innerHTML = "";
 })
 
 modalBg.addEventListener("click", () => {
     foodModal.classList.remove('is-active');
+    modalContentEl.innerHTML = "";
 })
 
 
@@ -39,10 +41,6 @@ foodSearchFormEl.addEventListener("submit", function(event) {
     ingredient = ingredientSearchInput.value.trim();
     diet = dietSelectEl.value;
     time = timeSelectEl.value;
-    console.log(diet);
-    console.log(typeof(diet));
-    console.log(time);
-    console.log(typeof(time));
 
     if (diet === "Choose preferred diet (optional)") {
         diet = undefined;
@@ -83,7 +81,13 @@ function getFoodRecipe(ingredient, diet, time) {
                 if (data.count !== 0) {
                     console.log(data);
                     showRecipes(data.hits);
+                } else {
+                    throw new Error;
                 }
+            })
+            .catch(function(error) {
+                console.log(error);
+                invalidIngredient(ingredient);
             })
     } else if (diet && !time) {
         fetch(foodURL + ingredient + appIDKey + "&diet=" + diet)
@@ -96,7 +100,13 @@ function getFoodRecipe(ingredient, diet, time) {
                 if (data.count !== 0) {
                     console.log(data);
                     showRecipes(data.hits);
+                } else {
+                    throw new Error;
                 }
+            })
+            .catch(function(error) {
+                console.log(error);
+                invalidIngredient(ingredient);
             })
     } else if (!diet && time) {
         fetch(foodURL + ingredient + appIDKey + "&time=" + time)
@@ -109,7 +119,13 @@ function getFoodRecipe(ingredient, diet, time) {
                 if (data.count !== 0) {
                     console.log(data);
                     showRecipes(data.hits);
+                } else {
+                    throw new Error;
                 }
+            })
+            .catch(function(error) {
+                console.log(error);
+                invalidIngredient(ingredient);
             })
     } else if (!diet && !time) {
         fetch(foodURL + ingredient + appIDKey)
@@ -122,16 +138,39 @@ function getFoodRecipe(ingredient, diet, time) {
                 if (data.count !== 0) {
                     console.log(data);
                     showRecipes(data.hits);
+                } else {
+                    throw new Error;
                 }
+            })
+            .catch(function(error) {
+                console.log(error);
+                invalidIngredient(ingredient);
             })
     }
 
 }
 
+
+// Show error message if user searches for invalid ingredient
+function invalidIngredient(ingredient) {
+    let errorMessageContainer = document.createElement("article");
+    errorMessageContainer.setAttribute("class", "card");
+    let errorDiv = document.createElement("div");
+    errorDiv.setAttribute("class", "card-content");
+    let errorMessage = document.createElement("p");
+    errorMessage.setAttribute("class", "title is-4 has-text-black");
+    errorMessage.textContent = "Sorry, there were no recipes found with that ingredient.";
+
+
+    modalContentEl.appendChild(errorMessageContainer);
+    errorMessageContainer.appendChild(errorDiv);
+    errorDiv.appendChild(errorMessage);
+}
+
+
 // Display recipes on cards within modal
 function showRecipes(recipes) {
     let allFoodRecipes = [];
-    modalContentEl.innerHTML = "";
 
     // Loop through recipe to create an object of necessary info for each recipe, and add it to the allFoodRecipes array
     for (let i = 0; i < recipes.length; i++) {
