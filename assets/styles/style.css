@@ -8,13 +8,6 @@ h2 {
   color:rgb(17, 110, 163);
 }
 
-/* .featured-food {
-  color: rgb(17, 110, 163);
-  
-}
-.featured-drink {
-  color: rgb(17, 110, 163);
-} */
 .card {
   border: 1px double rgb(49, 49, 49);
   box-shadow: 3px 3px 10px rgb(0, 0, 0);
@@ -35,6 +28,7 @@ h2 {
 
 h1#featured-recipes {
   color: rgb(17, 110, 163);
+  text-shadow: 3px 3px 10px rgba(155, 155, 155, 0.808);
   }
 #hero-banner-text {
   text-shadow: 0px 2px 5px black;
