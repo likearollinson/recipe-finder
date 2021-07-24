@@ -150,6 +150,8 @@ function getFoodRecipe(ingredient, diet, time) {
 
 }
 
+// This is a change
+
 
 // Show error message if user searches for invalid ingredient
 function invalidIngredient(ingredient) {
