@@ -10,7 +10,7 @@ const modalCloseBtn = document.querySelector("#close-modal");
 const modalBg = document.querySelector(".modal-background");
 const modalContentEl = document.querySelector("#modal-content-container");
 
-const favoritesSection = document.querySelector("#favorites-section");
+const clearFavoritesBtn = document.querySelector("#clear-favorites");
 const cardsContainer = document.querySelector("#cards-container");
 
 // Initiate these variables globally for use in multiple functions
@@ -55,6 +55,16 @@ foodSearchFormEl.addEventListener("submit", function(event) {
     foodModal.classList.add('is-active');
     getFoodRecipe(ingredient, diet, time);
 })
+
+
+clearFavoritesBtn.addEventListener("click", function(event) {
+    event.preventDefault();
+    localStorage.clear();
+    savedFood = [];
+    showFavorites(savedFood);
+})
+
+
 
 // Variables for food recipe search API
 const foodURL = "https://api.edamam.com/api/recipes/v2?type=public&q=";
@@ -142,8 +152,6 @@ function showRecipes(recipes) {
 
         let nextImageDiv = document.createElement("div");
         nextImageDiv.setAttribute("class", "card-image");
-        // nextImageDiv.setAttribute("id", i);
-        // // console.log(nextImageDiv);
 
         let nextFigure = document.createElement("figure");
         nextFigure.setAttribute("class", "image is-4by3");
@@ -179,8 +187,6 @@ function showRecipes(recipes) {
         // saveButton.setAttribute("data-index", i);
         console.log(saveButton);
 
-
-
         // Append all elements to their parents
         modalContentEl.appendChild(nextSection);
         nextSection.appendChild(nextCard);
@@ -188,10 +194,7 @@ function showRecipes(recipes) {
         nextCard.appendChild(nextCardContentDiv);
         nextImageDiv.appendChild(nextFigure);
         nextFigure.appendChild(nextImage);
-        
         nextCardContentDiv.appendChild(nextMediaDiv);
-
-
         nextMediaDiv.appendChild(nextMediaContent);
         nextMediaContent.appendChild(nextRecipeName);
         nextMediaContent.appendChild(nextRecipeURL);
@@ -209,37 +212,27 @@ function showRecipes(recipes) {
 
                 saveButton.setAttribute("class", "button is-success");
                 saveButton.textContent = "SAVED";
+                showFavorites(savedFood);
             }
         })
-           
-        //  = function(event) {
-        //     event.preventDefault();
-            
-        //     console.log(event.target.parentNode)
-        //    let savedFood = allFoodRecipes[saveButton.getAttribute("data-index")];
-        //    console.log(allFoodRecipes[saveButton.getAttribute("data-index")])
-        //    saveButton.innerHTML = "SAVED";
-            
-           
-        
-
         
     }
     console.log(allFoodRecipes);
-    // console.log(document.getElementById("1").id)
-
-    //  saveButton.addEventListener("submit", function(event) {
-    //      event.preventDefault();
-
-    //     console.log("Hello");
-    //  }) 
-
-    
 
 }
 
+
+// Display saved recipes from local storage on page load and upon saving a recipe
 function showFavorites(savedFood) {
     console.log(savedFood);
+
+    if (savedFood.length !== 0) {
+        clearFavoritesBtn.disabled = false;
+    } else {
+        clearFavoritesBtn.disabled = true;
+    }
+
+    cardsContainer.innerHTML = "";
 
     for (let i = 0; i < savedFood.length; i++) { 
 
@@ -247,7 +240,7 @@ function showFavorites(savedFood) {
 
         // Create elements
         let nextCard = document.createElement("article");
-        nextCard.setAttribute("class", "card column is-one-third m-5 p-5");
+        nextCard.setAttribute("class", "card column is-one-quarter m-5 p-5");
 
         let nextImageDiv = document.createElement("div");
         nextImageDiv.setAttribute("class", "card-image");
@@ -284,9 +277,7 @@ function showFavorites(savedFood) {
         nextCard.appendChild(nextCardContentDiv);
         nextImageDiv.appendChild(nextFigure);
         nextFigure.appendChild(nextImage);
-        
         nextCardContentDiv.appendChild(nextMediaDiv);
-
         nextMediaDiv.appendChild(nextMediaContent);
         nextMediaContent.appendChild(nextRecipeName);
         nextMediaContent.appendChild(nextRecipeURL);
@@ -294,4 +285,5 @@ function showFavorites(savedFood) {
     }
 }
 
+// Run on page load to show favorites from local storage if available
 showFavorites(savedFood);
