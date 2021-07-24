@@ -80,6 +80,39 @@ h1#featured-recipes {
   width: 50%;
 }
 
+/* favorite drinks section style */
+#favorites-section {
+  display: block;
+  text-align: center;
+}
+
+#clear-favorites {
+  margin: auto;
+  box-shadow: 0px 2px 5px black;
+}
+
+#clear-favorites:hover {
+  box-shadow: 0px 2px 5px rgb(17, 110, 163);
+}
+
+#cards-container {
+  justify-content: center;
+  margin-top: 10px;
+}
+
+@media only screen and (max-width: 576px) {
+  #food-return {
+    width: 100%;
+  }
+  #food-ingredient-search-input {
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin: auto;
+    margin-bottom: -20px;
+  }
+}
+
 
 @media only screen and (max-width: 576px) {
   #food-return {

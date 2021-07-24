@@ -19,7 +19,7 @@ let diet;
 let time;
 
 // local storage section
-let savedFood = JSON.parse(localStorage.getItem("userFavorites") || "[]");
+let savedFood = JSON.parse(localStorage.getItem("userFoodFavorites") || "[]");
 
 
 // Add event listeners to close modal
@@ -59,7 +59,7 @@ foodSearchFormEl.addEventListener("submit", function(event) {
 
 clearFavoritesBtn.addEventListener("click", function(event) {
     event.preventDefault();
-    localStorage.clear();
+    localStorage.removeItem("userFoodFavorites");
     savedFood = [];
     showFavorites(savedFood);
 })
@@ -208,7 +208,7 @@ function showRecipes(recipes) {
                 console.log(event.target.parentNode)
                 console.log("hey");
                 savedFood.push(allFoodRecipes[i]);
-                localStorage.setItem("userFavorites", JSON.stringify(savedFood));
+                localStorage.setItem("userFoodFavorites", JSON.stringify(savedFood));
 
                 saveButton.setAttribute("class", "button is-success");
                 saveButton.textContent = "SAVED";
