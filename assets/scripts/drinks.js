@@ -167,23 +167,6 @@ function showDrinkRecipes(drinkRecipes) {
 
         allDrinkRecipes.push(nextDrinkRecipe);
 
-<<<<<<< HEAD
-        function getDrinkIngredientRecipe(drinkIngredient) {
-            fetch(drinkURL + "lookup.php?i=" + drinkIngredient)
-                .then(function (response) {
-                    if (response.ok) {
-                        return response.json();
-                    }
-                })
-                .then(function (data) {
-                    if (data.count !== 0) {
-                        showDrinkRecipes(data);
-                        console.log(data);
-                    }
-                })
-        }
-    }
-=======
         // getDrinkIngredientRecipe(nextDrinkRecipe.id, nextDrinkRecipe.name);
 
         // function getDrinkIngredientRecipe(drinkId, drinkName) {
@@ -203,7 +186,6 @@ function showDrinkRecipes(drinkRecipes) {
         //             }
         //         })
         // }
->>>>>>> 593ff57ba494ba0a2dbc6553842fcf5535e91207
 
 
 
@@ -253,12 +235,6 @@ function showDrinkRecipes(drinkRecipes) {
         nextMediaContent.appendChild(nextRecipeURL);
         nextRecipeURL.appendChild(nextLink);
 
-<<<<<<< HEAD
-        nextSection.style.display = "block";
-    
-    
-=======
     }
     console.log(allDrinkRecipes);
->>>>>>> 593ff57ba494ba0a2dbc6553842fcf5535e91207
 }

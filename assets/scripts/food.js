@@ -171,7 +171,7 @@ function showRecipes(recipes) {
 
         let saveButton = document.createElement("button");
         saveButton.setAttribute("type", "submit");
-        saveButton.setAttribute("id", i);
+        saveButton.setAttribute("data-index", i);
         console.log(saveButton);
         saveButton.innerHTML = "SAVE ME!";
 
@@ -194,14 +194,25 @@ function showRecipes(recipes) {
         nextMediaContent.appendChild(nextRecipeURL);
         nextRecipeURL.appendChild(nextLink);
         
-        saveButton.onclick = function(event) {
+        saveButton.addEventListener("click", function(event) {
             event.preventDefault();
-            console.log(saveButton.id)
-            if (saveButton.id == 0){
-               
-            }
+            
+            console.log(event.target.parentNode)
+           let savedFood = allFoodRecipes[saveButton.getAttribute("data-index")];
+           console.log(allFoodRecipes[saveButton.getAttribute("data-index")])
+           saveButton.innerHTML = "SAVED";
+        }  )
            
-        } 
+        //  = function(event) {
+        //     event.preventDefault();
+            
+        //     console.log(event.target.parentNode)
+        //    let savedFood = allFoodRecipes[saveButton.getAttribute("data-index")];
+        //    console.log(allFoodRecipes[saveButton.getAttribute("data-index")])
+        //    saveButton.innerHTML = "SAVED";
+            
+           
+        
 
         
     }
