@@ -16,7 +16,7 @@ let diet;
 let time;
 
 // local storage section
-
+let savedFood = JSON.parse(localStorage.getItem("userFavorites") || "[]");
 
 
 // Add event listeners to close modal
@@ -198,8 +198,11 @@ function showRecipes(recipes) {
             event.preventDefault();
             
             console.log(event.target.parentNode)
-           let savedFood = allFoodRecipes[saveButton.getAttribute("data-index")];
-           console.log(allFoodRecipes[saveButton.getAttribute("data-index")])
+            savedFood.push(allFoodRecipes[i]);
+        //    let savedFood = allFoodRecipes[i];
+        localStorage.setItem("userFavorites", JSON.stringify(savedFood));
+        //    console.log(savedFood);
+           // allFoodRecipes[saveButton.getAttribute("data-index")]
            saveButton.innerHTML = "SAVED";
         }  )
            
