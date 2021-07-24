@@ -191,7 +191,7 @@ function showDrinkRecipes(drinkRecipes) {
 
         // Create elements
         let nextCard = document.createElement("article");
-        nextCard.setAttribute("class", "card");
+        nextCard.setAttribute("class", "card m-5 p-5");
 
         let nextImageDiv = document.createElement("div");
         nextImageDiv.setAttribute("class", "card-image");
