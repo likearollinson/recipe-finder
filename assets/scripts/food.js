@@ -11,6 +11,7 @@ const modalBg = document.querySelector(".modal-background");
 const modalContentEl = document.querySelector("#modal-content-container");
 
 const favoritesSection = document.querySelector("#favorites-section");
+const cardsContainer = document.querySelector("#cards-container");
 
 // Initiate these variables globally for use in multiple functions
 let ingredient;
@@ -238,13 +239,15 @@ function showRecipes(recipes) {
 }
 
 function showFavorites(savedFood) {
+    console.log(savedFood);
+
     for (let i = 0; i < savedFood.length; i++) { 
 
         let nextRecipe = savedFood[i];
 
         // Create elements
         let nextCard = document.createElement("article");
-        nextCard.setAttribute("class", "card m-5 p-5");
+        nextCard.setAttribute("class", "card column is-one-third m-5 p-5");
 
         let nextImageDiv = document.createElement("div");
         nextImageDiv.setAttribute("class", "card-image");
@@ -276,7 +279,7 @@ function showFavorites(savedFood) {
         nextLink.textContent = nextRecipe.url;
 
         // Append all elements to their parents
-        modalContentEl.appendChild(nextCard);
+        cardsContainer.appendChild(nextCard);
         nextCard.appendChild(nextImageDiv);
         nextCard.appendChild(nextCardContentDiv);
         nextImageDiv.appendChild(nextFigure);
