@@ -9,8 +9,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital@1&family=Otomanopee+One&display=swap"
-    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital@1&family=Otomanopee+One&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
     integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
@@ -19,74 +18,80 @@
 </head>
 
 <body>
-  <!-- Navbar -->
-  <nav class="navbar pb-3 pt-3" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-      <a class="navbar-item" href="../index.html">
-        <i class="fas fa-glass-whiskey" style="color: rgb(17, 110, 163); font-size: 2.5rem">
-          Skillet & Shaker</i>
-      </a>
+  <header>
+    <!-- Navbar -->
+    <nav class="navbar pb-3 pt-3" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="../index.html">
+          <i class="fas fa-glass-whiskey" style="color: rgb(17, 110, 163); font-size: 2.5rem">
+            Skillet & Shaker</i>
+        </a>
 
-      <!-- <a
+        <!-- <a
             role="button"
             class="navbar-burger"
             aria-label="menu"
             aria-expanded="false"
             data-target="navbarBasicExample"
           > -->
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      </a>
-    </div>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        </a>
+      </div>
 
-    
 
-    <div class="navbar-end">
-      <div class="navbar-item">
-        <div class="buttons">
-          <a href="./food.html" id="food-search-button" class="button is-link"><strong>Search Food</strong></a>
-          <a href="./drinks.html" id="drinks-search-button" class="button is-link"><strong>Search Drinks</strong></a>
+
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <a href="./food.html" id="food-search-button" class="button is-link"><strong>Search Food</strong></a>
+            <a href="./drinks.html" id="drinks-search-button" class="button is-link"><strong>Search Drinks</strong></a>
+          </div>
         </div>
       </div>
-    </div>
-    </div>
-  </nav>
-  <!-- Main -->
-  <section class="hero is-medium is-dark" style="
+    </nav>
+  </header>
+
+  <main>
+    <!-- Main -->
+    <section class="hero is-medium is-dark" style="
       background-image: url(../assets/images/background-food.jpg);
       background-size:cover;
       background-repeat: no-repeat;
-      background-blend-mode: soft-light;
-    ">
-    <div class="hero-body">
-      <p class="title has-text-centered is-size-2 has-text-primary">
-        Drink Recipe Search
-      </p>
-      <p class="subtitle has-text-centered is-size-3">
-        Find the perfect cocktail or mocktail in minutes!
-      </p>
-      <section class="section">
-        <form id="drink-search-form">  
-          <label class="has-text-primary is-size-3 mb-5"><strong>Alcohol/Ingredient</strong>
-            <input class="input"  id="drink-ingredient" type="text" placeholder="Search by alcohol or ingredient">
-          </label>
-          <label class="has-text-primary is-size-3"><strong>Cocktail Name</strong>
-            <input class="input mb-5" type="text" placeholder="Search by cocktail name">
-          </label>
-            <button class="button is-large is-fullwidth is-success mb-5" id="search-drinks" type="submit">Search</button>
+      background-blend-mode: soft-light;">
+
+      <div class="hero-body">
+        <p class="title has-text-centered is-size-2 has-text-primary" id="drink-hero-banner">
+          Drink Recipe Search
+        </p>
+        <p class="subtitle has-text-centered is-size-3" id="drink-hero-subtitle">
+          Find the perfect cocktail or mocktail in minutes!
+        </p>
+        <section class="section">
+          <form id="drink-search-form">
+            <label class="has-text-primary is-size-3 mb-5" id="alcohol"><strong>Alcohol/Ingredient</strong></label>
+            <input class="input" id="drink-ingredient" type="text" placeholder="Search by alcohol or ingredient">
+            <label class="has-text-primary is-size-3" id="cocktail-name"><strong>Cocktail Name</strong></label>
+            <input id="cocktail-search" class="input mb-5" type="text" placeholder="Search by cocktail name">
+            <button class="button is-large is-fullwidth is-success mb-5" id="search-drinks"
+              type="submit">Search</button>
           </form>
-        <button class="button is-large is-fullwidth is-info" id="random-drinks" type="submit">IDK, Tell Me What to Drink!</button>    
+          <button class="button is-large is-fullwidth is-info" id="random-drinks" type="submit">IDK, Tell Me What to Drink!</button>
+        </section>
+      </div>
+    </section>
+
+    <div id="drink-modal" class="modal is-clipped">
+      <div id="drink-modal-background" class="modal-background"></div>
+      <div id="drink-modal-content-container" class="modal-content has-background-white py-5 px-5">
+        <!-- Any other Bulma elements you want -->
+      </div>
+      <button class="modal-close is-large" id="close-drink-modal" aria-label="close"></button>
     </div>
-  </section>
-  <div id=“drink-modal” class=“modal is-clipped”>
-    <div class=“modal-background”></div>
-    <div id=“modal-content-container” class=“modal-content has-background-white py-5 px-5”>
-      <!-- Any other Bulma elements you want -->
-    </div>
-    <button class=“modal-close is-large” id=“close-modal” aria-label=“close”></button>
-  </div>
-  
+
+  </main>
+
   <!-- Footer -->
   <footer class="footer">
     <div class="content has-text-centered">
@@ -97,6 +102,7 @@
       </p>
     </div>
   </footer>
+
   <script src="../assets/scripts/drinks.js"></script>
 </body>
 
