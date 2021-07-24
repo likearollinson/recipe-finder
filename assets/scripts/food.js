@@ -15,6 +15,9 @@ let ingredient;
 let diet;
 let time;
 
+// local storage section
+
+
 
 // Add event listeners to close modal
 modalCloseBtn.addEventListener("click", () => {
@@ -125,7 +128,7 @@ function showRecipes(recipes) {
             image: recipes[i].recipe.image,
             url: recipes[i].recipe.url
         }
-
+        
         allFoodRecipes.push(nextRecipe);
 
         // Create elements
@@ -137,6 +140,8 @@ function showRecipes(recipes) {
 
         let nextImageDiv = document.createElement("div");
         nextImageDiv.setAttribute("class", "card-image");
+        // nextImageDiv.setAttribute("id", i);
+        // // console.log(nextImageDiv);
 
         let nextFigure = document.createElement("figure");
         nextFigure.setAttribute("class", "image is-4by3");
@@ -164,6 +169,14 @@ function showRecipes(recipes) {
         nextLink.setAttribute("target", "_blank");
         nextLink.textContent = nextRecipe.url;
 
+        let saveButton = document.createElement("button");
+        saveButton.setAttribute("type", "submit");
+        saveButton.setAttribute("data-index", i);
+        console.log(saveButton);
+        saveButton.innerHTML = "SAVE ME!";
+
+
+
         // Append all elements to their parents
         modalContentEl.appendChild(nextSection);
         nextSection.appendChild(nextCard);
@@ -173,12 +186,45 @@ function showRecipes(recipes) {
         nextFigure.appendChild(nextImage);
         
         nextCardContentDiv.appendChild(nextMediaDiv);
+
+        nextCardContentDiv.appendChild(saveButton);
+
         nextMediaDiv.appendChild(nextMediaContent);
         nextMediaContent.appendChild(nextRecipeName);
         nextMediaContent.appendChild(nextRecipeURL);
         nextRecipeURL.appendChild(nextLink);
+        
+        saveButton.addEventListener("click", function(event) {
+            event.preventDefault();
+            
+            console.log(event.target.parentNode)
+           let savedFood = allFoodRecipes[saveButton.getAttribute("data-index")];
+           console.log(allFoodRecipes[saveButton.getAttribute("data-index")])
+           saveButton.innerHTML = "SAVED";
+        }  )
+           
+        //  = function(event) {
+        //     event.preventDefault();
+            
+        //     console.log(event.target.parentNode)
+        //    let savedFood = allFoodRecipes[saveButton.getAttribute("data-index")];
+        //    console.log(allFoodRecipes[saveButton.getAttribute("data-index")])
+        //    saveButton.innerHTML = "SAVED";
+            
+           
+        
 
-
+        
     }
     console.log(allFoodRecipes);
+    // console.log(document.getElementById("1").id)
+
+    //  saveButton.addEventListener("submit", function(event) {
+    //      event.preventDefault();
+
+    //     console.log("Hello");
+    //  }) 
+
+    
+
 }
