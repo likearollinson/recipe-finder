@@ -208,7 +208,7 @@ function showDrinkRecipes(drinkRecipes) {
         let nextLink = document.createElement("a");
         nextLink.setAttribute("href", thisDrinkURL);
         nextLink.setAttribute("target", "_blank");
-        nextLink.textContent = thisDrinkURL;
+        nextLink.textContent = "GO TO COCKTAIL RECIPE";
 
         let saveButton = document.createElement("button");
 
@@ -229,6 +229,7 @@ function showDrinkRecipes(drinkRecipes) {
         nextFigure.appendChild(nextImage);
 
         nextCardContentDiv.appendChild(nextMediaDiv);
+        nextCardContentDiv.appendChild(saveButton);
         nextMediaDiv.appendChild(nextMediaContent);
         nextMediaContent.appendChild(nextRecipeName);
         nextMediaContent.appendChild(nextRecipeURL);
@@ -247,6 +248,7 @@ function showDrinkRecipes(drinkRecipes) {
             }
         })
 
+        
     }
 }
 
@@ -299,7 +301,7 @@ function showFavorites(savedDrinks) {
         let nextLink = document.createElement("a");
         nextLink.setAttribute("href", nextRecipe.url);
         nextLink.setAttribute("target", "_blank");
-        nextLink.textContent = nextRecipe.url;
+        nextLink.textContent = "GO TO COCKTAIL RECIPE";
 
         // Append all elements to their parents
         cardsContainer.appendChild(nextCard);
