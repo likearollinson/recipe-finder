@@ -214,6 +214,7 @@ function showRecipes(recipes) {
 
         let saveButton = document.createElement("button");
         
+        // Style button to show whether a recipe has already been saved
         if (JSON.stringify(savedFood).includes(JSON.stringify(nextRecipe))) {
             saveButton.setAttribute("class", "button is-success");
             saveButton.textContent = "SAVED";

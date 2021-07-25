@@ -157,9 +157,8 @@ function invalidIngredient(drinkIngredient) {
 
 // Display recipes on cards within modal
 function showDrinkRecipes(drinkRecipes) {
-    let allDrinkRecipes = [];
 
-    // Loop through recipes to create an object of necessary info for each recipe, and add it to the allDrinkRecipes array
+    // Loop through recipes to create an object of necessary info for each recipe
     for (let i = 0; i < drinkRecipes.length; i++) {
 
         let thisDrinkName = drinkRecipes[i].strDrink;
@@ -177,9 +176,6 @@ function showDrinkRecipes(drinkRecipes) {
             image: thisDrinkImage,
             url: thisDrinkURL
         }
-
-        allDrinkRecipes.push(nextDrinkRecipe);
-
 
         // Create elements to add to the modal for each recipe
         let nextCard = document.createElement("article");
@@ -215,9 +211,15 @@ function showDrinkRecipes(drinkRecipes) {
         nextLink.textContent = thisDrinkURL;
 
         let saveButton = document.createElement("button");
-        // saveButton.setAttribute("type", "submit");
-        saveButton.setAttribute("class", "button is-info");
-        saveButton.textContent = "SAVE ME!";
+
+        // Style button to show whether a recipe has already been saved
+        if (JSON.stringify(savedDrinks).includes(JSON.stringify(nextDrinkRecipe))) {
+            saveButton.setAttribute("class", "button is-success");
+            saveButton.textContent = "SAVED";
+        } else {
+            saveButton.setAttribute("class", "button is-info");
+            saveButton.textContent = "SAVE ME!";
+        }
 
         // Append elements to their parents
         modalContentEl.appendChild(nextCard);
@@ -236,7 +238,7 @@ function showDrinkRecipes(drinkRecipes) {
         saveButton.addEventListener("click", function(event) {
             event.preventDefault();
             if (saveButton.textContent !== "SAVED") {
-                savedDrinks.push(allDrinkRecipes[i]);
+                savedDrinks.push(nextDrinkRecipe);
                 localStorage.setItem("userDrinkFavorites", JSON.stringify(savedDrinks));
     
                 saveButton.setAttribute("class", "button is-success");
