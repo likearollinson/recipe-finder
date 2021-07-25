@@ -166,9 +166,8 @@ function invalidIngredient(ingredient) {
 
 // Display recipes on cards within modal
 function showRecipes(recipes) {
-    let allFoodRecipes = [];
 
-    // Loop through recipes to create an object of necessary info for each recipe, and add it to the allFoodRecipes array
+    // Loop through recipes to create an object of necessary info for each recipe
     for (let i = 0; i < recipes.length; i++) {
 
         let nextRecipe = {
@@ -177,8 +176,6 @@ function showRecipes(recipes) {
             url: recipes[i].recipe.url
         }
         
-        allFoodRecipes.push(nextRecipe);
-
         // Create elements
         let nextSection = document.createElement("section");
 
@@ -218,11 +215,9 @@ function showRecipes(recipes) {
         let saveButton = document.createElement("button");
         
         if (JSON.stringify(savedFood).includes(JSON.stringify(nextRecipe))) {
-            console.log("it's here");
             saveButton.setAttribute("class", "button is-success");
             saveButton.textContent = "SAVED";
         } else {
-            console.log("it's new");
             saveButton.setAttribute("class", "button is-info");
             saveButton.textContent = "SAVE ME!";
         }
@@ -248,7 +243,7 @@ function showRecipes(recipes) {
         saveButton.addEventListener("click", function(event) {
             event.preventDefault();
             if (saveButton.textContent !== "SAVED") {
-                savedFood.push(allFoodRecipes[i]);
+                savedFood.push(nextRecipe);
                 localStorage.setItem("userFoodFavorites", JSON.stringify(savedFood));
 
                 saveButton.setAttribute("class", "button is-success");
