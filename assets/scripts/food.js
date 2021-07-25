@@ -216,8 +216,19 @@ function showRecipes(recipes) {
         nextLink.textContent = nextRecipe.url;
 
         let saveButton = document.createElement("button");
-        saveButton.setAttribute("class", "button is-info");
-        saveButton.textContent = "SAVE ME!";
+        
+        if (JSON.stringify(savedFood).includes(JSON.stringify(nextRecipe))) {
+            console.log("it's here");
+            saveButton.setAttribute("class", "button is-success");
+            saveButton.textContent = "SAVED";
+        } else {
+            console.log("it's new");
+            saveButton.setAttribute("class", "button is-info");
+            saveButton.textContent = "SAVE ME!";
+        }
+        
+
+
 
         // Append all elements to their parents
         modalContentEl.appendChild(nextSection);
