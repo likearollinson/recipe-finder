@@ -34,7 +34,7 @@ modalBg.addEventListener("click", () => {
 })
 
 
-// Add event listener to food search form
+// Search for recipes on form submit
 foodSearchFormEl.addEventListener("submit", function(event) {
     event.preventDefault();
 
@@ -68,7 +68,7 @@ clearFavoritesBtn.addEventListener("click", function(event) {
 const foodURL = "https://api.edamam.com/api/recipes/v2?type=public&q=";
 const appIDKey = "&app_id=99f65177&app_key=ecb411eb41e5416150875af0c19ffec7";
 
-// Gets data from Edamam API
+// Gets data from Edamam API, conditionals to check for which parameters to use in search
 function getFoodRecipe(ingredient, diet, time) {
     if (diet && time) {
         fetch(foodURL + ingredient + appIDKey + "&diet=" + diet + "&time=" + time)
@@ -79,7 +79,6 @@ function getFoodRecipe(ingredient, diet, time) {
             })
             .then(function(data) {
                 if (data.count !== 0) {
-                    console.log(data);
                     showRecipes(data.hits);
                 } else {
                     throw new Error;
@@ -98,7 +97,6 @@ function getFoodRecipe(ingredient, diet, time) {
             })
             .then(function(data) {
                 if (data.count !== 0) {
-                    console.log(data);
                     showRecipes(data.hits);
                 } else {
                     throw new Error;
@@ -117,7 +115,6 @@ function getFoodRecipe(ingredient, diet, time) {
             })
             .then(function(data) {
                 if (data.count !== 0) {
-                    console.log(data);
                     showRecipes(data.hits);
                 } else {
                     throw new Error;
@@ -136,7 +133,6 @@ function getFoodRecipe(ingredient, diet, time) {
             })
             .then(function(data) {
                 if (data.count !== 0) {
-                    console.log(data);
                     showRecipes(data.hits);
                 } else {
                     throw new Error;
@@ -149,8 +145,6 @@ function getFoodRecipe(ingredient, diet, time) {
     }
 
 }
-
-// This is a change
 
 
 // Show error message if user searches for invalid ingredient
@@ -172,9 +166,8 @@ function invalidIngredient(ingredient) {
 
 // Display recipes on cards within modal
 function showRecipes(recipes) {
-    let allFoodRecipes = [];
 
-    // Loop through recipe to create an object of necessary info for each recipe, and add it to the allFoodRecipes array
+    // Loop through recipes to create an object of necessary info for each recipe
     for (let i = 0; i < recipes.length; i++) {
 
         let nextRecipe = {
@@ -183,8 +176,6 @@ function showRecipes(recipes) {
             url: recipes[i].recipe.url
         }
         
-        allFoodRecipes.push(nextRecipe);
-
         // Create elements
         let nextSection = document.createElement("section");
 
@@ -215,18 +206,25 @@ function showRecipes(recipes) {
 
         let nextRecipeURL = document.createElement("p");
         nextRecipeURL.setAttribute("class", "subtitle is-6 has-text-black");
+
         let nextLink = document.createElement("a");
         nextLink.setAttribute("href", nextRecipe.url);
         nextLink.setAttribute("target", "_blank");
         nextLink.textContent = nextRecipe.url;
 
         let saveButton = document.createElement("button");
-        // saveButton.setAttribute("type", "submit");
-        saveButton.setAttribute("class", "button is-info");
-        saveButton.textContent = "SAVE ME!";
+        
+        // Style button to show whether a recipe has already been saved
+        if (JSON.stringify(savedFood).includes(JSON.stringify(nextRecipe))) {
+            saveButton.setAttribute("class", "button is-success");
+            saveButton.textContent = "SAVED";
+        } else {
+            saveButton.setAttribute("class", "button is-info");
+            saveButton.textContent = "SAVE ME!";
+        }
+        
 
-        // saveButton.setAttribute("data-index", i);
-        console.log(saveButton);
+
 
         // Append all elements to their parents
         modalContentEl.appendChild(nextSection);
@@ -246,9 +244,7 @@ function showRecipes(recipes) {
         saveButton.addEventListener("click", function(event) {
             event.preventDefault();
             if (saveButton.textContent !== "SAVED") {
-                console.log(event.target.parentNode)
-                console.log("hey");
-                savedFood.push(allFoodRecipes[i]);
+                savedFood.push(nextRecipe);
                 localStorage.setItem("userFoodFavorites", JSON.stringify(savedFood));
 
                 saveButton.setAttribute("class", "button is-success");
@@ -258,15 +254,13 @@ function showRecipes(recipes) {
         })
         
     }
-    console.log(allFoodRecipes);
-
 }
 
 
 // Display saved recipes from local storage on page load and upon saving a recipe
 function showFavorites(savedFood) {
-    console.log(savedFood);
 
+    // Disable the "clear favorites" button if there are no items in the favorites section and enable otherwise
     if (savedFood.length !== 0) {
         clearFavoritesBtn.disabled = false;
     } else {
