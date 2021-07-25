@@ -208,7 +208,7 @@ function showDrinkRecipes(drinkRecipes) {
         let nextLink = document.createElement("a");
         nextLink.setAttribute("href", thisDrinkURL);
         nextLink.setAttribute("target", "_blank");
-        nextLink.textContent = thisDrinkURL;
+        nextLink.textContent = "GO TO COCKTAIL RECIPE";
 
         let saveButton = document.createElement("button");
 
@@ -301,7 +301,7 @@ function showFavorites(savedDrinks) {
         let nextLink = document.createElement("a");
         nextLink.setAttribute("href", nextRecipe.url);
         nextLink.setAttribute("target", "_blank");
-        nextLink.textContent = nextRecipe.url;
+        nextLink.textContent = "GO TO COCKTAIL RECIPE";
 
         // Append all elements to their parents
         cardsContainer.appendChild(nextCard);
