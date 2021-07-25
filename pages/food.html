@@ -61,8 +61,9 @@
         <form id="food-search-form">
           <label class="has-text-primary is-size-3" id="ingredient"><strong>Ingredient</strong></label>
             <input id="food-ingredient-search-input" class="input" type="text" placeholder="Search by ingredient (required)" required>
+          <input id="food-ingredient-search-input" class="input" type="text" placeholder="Search by ingredient" autocomplete="off" required>
           <br>
-         
+        
           <label id="diet-input" class="has-text-primary is-size-3"><strong>Diet</strong></label>
           <br>
           <div class="select is-primary">
@@ -89,7 +90,6 @@
             </select>
           </div>
             
-            
           <button class="button is-large is-fullwidth is-success mt-5" type="submit" id="food-return">Search</button>
         </form>
       </section>
@@ -99,7 +99,6 @@
     <div class="modal-background"></div>
     <div id="modal-content-container" class="modal-content has-background-white py-5 px-5">
       <!-- Any other Bulma elements you want -->
-      
       
     </div>
     <button class="modal-close is-large" id="close-modal" aria-label="close"></button>
