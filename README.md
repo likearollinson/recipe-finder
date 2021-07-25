@@ -1,36 +1,42 @@
-# Welcome to my Weather Dashboard!
+# Welcome to Skillet and Shaker! Your one stop spot to find food and drink recipes.
 
-#### This is a web application designed using HTML, CSS, JS, Bootstrap, and the Open Weather Map API allowing users to search for the weather in a specific city, and see the current weather and a the 5 day forecast.
+#### This is a web application designed using HTML, CSS, JS, Bulma, the Edamam food recipe finding API, and the CocktailDB API allowing users to search for drink recipes, ad save the results.
 
 ## Link to Deployed Site
 
-[Weather Dashboard](https://beardomattix.github.io/Weather-Dashboard/)
+[Skillet and Shaker](https://likearollinson.github.io/recipe-finder/)
 
 ## Table of Contents
   * [Motivation and Technologies](#motivation)
   * [Functionality](#functionality)
   * [File Architecture](#file-architecture)
+  * [Challenges](#challenges)
   * [Usage](#usage)
 
 ## Motivation
 
-I wanted to create a simple weather app that allows users to input a city and see the current and future weather. The app uses the Open Weather Map API to get the weather information, and it is rendered on the page using JS. The app also allows users to see their previous searches by rendering them in a list below the search bar. When a user clicks on a previous search, they are taken back to the weather information for that city. Users can also click to clear the search history!
+As a team, we aimed to create a web application where users who are looking for cocktail or food recipes in a simple and easy to use fashion. We wanted the users to be able to search by simple parameters to find the recipe(s) they are looking for.  An added feature is that users can save search results with a simgle click, and revisit them whenever they want. The design concept is simple, easy to navigate, and consistent across all pages.
 
 #### Technologies
 * HTML
 * CSS 
 * JavaScript
-* Bootstrap
-* Open Weather Map API
+* Bulma
+* Edamam Recipe API
+* CocktailDB Recipe API
 
 ## Functionality
 
 ![Weather-DEMO](https://user-images.githubusercontent.com/82903201/125833228-4862c1f1-1a77-4414-a194-bb32068a36ef.gif)
-#### The demo shows the main functions of the Weather Dashboard:
-* Users search for weather by typing in the name of a city.
-* The app makes a call to the open weather API and returns the current weather in the searched city, and a 5 day forecast.  
-* Searches are saved in local storage and displayed on the page under the search bar. 
-* When a user clicks on a previous search, they given the accurate weather for that city.  
+#### The demo shows the main functions of Skillet and Shaker recipe finder:
+* The landing page introduces the site, has buttons to navigate to Food and Drink search pages, and includes a "Featured Recipes" section for users who prefer not to spend time searching.
+* Users click on either "Search Food" or "Drink Search" in the navbar which leads them to a page for finding food recipes or drink recipes by certain search parameters. 
+* On the "Search Food" page, the user is presented with a search form with the parameters of ingredient, diet, and cooktime.  
+* The user must enter an ingredient, but can select a preferred diet type and cooktime from dropdown menus.
+* Recipes are shown in a modal with multiple cards displaying a picture of the dish, the name of the dish, a link to the recipe, and a save recipe button. 
+* If the user hits the save recipe button, the recipe card is shown at the bottom of the page along with any other recipes that have been previously saved. These saved items are stored in local storage.
+* The favorites sections have a "Clear" button for users to reset their favorites.
+* The "Search Drinks" page functions in the same fashion as the "Search Food" page, except that the search parameters are  ingredient, cocktail name, and a button to show a random cocktail recipe.
 
 ## File Architecture
 ```
@@ -56,12 +62,21 @@ I wanted to create a simple weather app that allows users to input a city and se
     ├── drinks.html
     └── food.html
 ```
+## Challenges
+The major challenge we faced with the development of this application was dealing with github merge conflicts and making sure we weren't all working on the same sections at the same time.
 
 ## Usage
-* Find the current weather of a chosen city. 
+* Find food and drink recipes based on certain parameters. 
 * Use this to help understand how to make API calls.
-* Use to see how to easlily incorporate Bootstrap into a responsive web application. 
+* Save search results and return to them as needed.
+* Use to see how to incorporate Bulma into a responsive web application.
+* Learn how to develop a web application in a group and use github in a group setting. 
 
 ## Future Development
-* Use geolocation to show the weather information for the users current location upon page load. 
-* Integrate weather maps so users can see the real-time weather map for a specific area. 
+* Refine the favorites section and create a digital recipe book that users can download.
+* Further develop the API calls and display full recipes on the page.
+* Create a stylized recipe book using Bulma and CSS.
+* Unify the JS code across pages for easier use.
+* Use "On load" API calls to reduce the amount of stale data on the page.
+* Create a specific page for favorite recipes.
+* Optimize dynamic creation, searches, and functions 
