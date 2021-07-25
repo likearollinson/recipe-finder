@@ -13,11 +13,10 @@ let cocktailNameSearchInputEl = document.querySelector("#cocktail-search");
 const clearFavoritesBtn = document.querySelector("#clear-favorites");
 const cardsContainer = document.querySelector("#cards-container");
 
-// const searchBtnEl = document.querySelector("#search-btn");
-
+// Declare globally for use in multiple functions
 let drinkIngredient;
 
-// local storage section
+// Set savedDrinks from local storage if available, and to an empty array if not
 let savedDrinks = JSON.parse(localStorage.getItem("userDrinkFavorites") || "[]");
 
 
@@ -32,9 +31,9 @@ modalCloseBtn.addEventListener("click", () => {
     modalContentEl.innerHTML = "";
 })
 
+
 // Add event listeners to make sure only one search parameter can be used (API limitation)
 drinkIngredientSearchInputEl.addEventListener("blur", function() {
-    console.log("works");
     if (drinkIngredientSearchInputEl.value.trim().length !== 0) {
         cocktailNameSearchInputEl.disabled = true;
     } else {
@@ -51,6 +50,7 @@ cocktailNameSearchInputEl.addEventListener("blur", function() {
 })
 
 
+// Search for drink recipes on form submit
 drinkSearchFormEl.addEventListener("submit", function (event) {
     event.preventDefault();
     drinkIngredient = drinkIngredientSearchInputEl.value.trim();
@@ -65,11 +65,14 @@ drinkSearchFormEl.addEventListener("submit", function (event) {
     }
 })
 
+
+// Search for random recipe
 randomDrinkSearchBtn.addEventListener("click", function(event) {
     event.preventDefault();
     drinkModal.classList.add("is-active");
     getRandomDrinkRecipe();
 })
+
 
 // Clear favorites button function
 clearFavoritesBtn.addEventListener("click", function(event) {
@@ -93,7 +96,6 @@ function getDrinkFromIngredient(drinkIngredient) {
         })
         .then(function (data) {
             if (data.count !== 0) {
-                console.log(data);
                 showDrinkRecipes(data.drinks);
             }
         })
@@ -113,7 +115,6 @@ function getDrinkFromName(cocktailName) {
         })
         .then(function (data) {
             if (data.count !== 0) {
-                console.log(data);
                 showDrinkRecipes(data.drinks);
             }
         })
@@ -130,7 +131,6 @@ function getRandomDrinkRecipe() {
             return response.json();
         })
         .then(function (data) {
-            console.log(data);
             showDrinkRecipes(data.drinks)
         })
 }
@@ -157,10 +157,8 @@ function invalidIngredient(drinkIngredient) {
 
 // Display recipes on cards within modal
 function showDrinkRecipes(drinkRecipes) {
-    console.log(drinkRecipes);
-    let allDrinkRecipes = [];
 
-    // Loop through recipe to create an object of necessary info for each recipe, and add it to the allDrinkRecipes array
+    // Loop through recipes to create an object of necessary info for each recipe
     for (let i = 0; i < drinkRecipes.length; i++) {
 
         let thisDrinkName = drinkRecipes[i].strDrink;
@@ -178,33 +176,8 @@ function showDrinkRecipes(drinkRecipes) {
             image: thisDrinkImage,
             url: thisDrinkURL
         }
-        console.log(nextDrinkRecipe);
 
-        allDrinkRecipes.push(nextDrinkRecipe);
-
-        // getDrinkIngredientRecipe(nextDrinkRecipe.id, nextDrinkRecipe.name);
-
-        // function getDrinkIngredientRecipe(drinkId, drinkName) {
-        //     fetch(drinkURL + "lookup.php?i=" + drinkId)
-        //         .then(function (response) {
-        //             if (response.ok) {
-        //                 return response.json();
-        //             }
-        //         })
-        //         .then(function (data) {
-        //             if (data.count !== 0) {
-        //                 console.log(data);
-
-        //                 console.log(newName);
-        //                 console.log(`https://www.thecocktaildb.com/drink/${drinkId}-${newName}-Cocktail`);
-        //                 showDrinkRecipes(data);
-        //             }
-        //         })
-        // }
-
-
-
-        // Create elements
+        // Create elements to add to the modal for each recipe
         let nextCard = document.createElement("article");
         nextCard.setAttribute("class", "card m-5 p-5");
 
@@ -238,11 +211,17 @@ function showDrinkRecipes(drinkRecipes) {
         nextLink.textContent = thisDrinkURL;
 
         let saveButton = document.createElement("button");
-        // saveButton.setAttribute("type", "submit");
-        saveButton.setAttribute("class", "button is-info");
-        saveButton.textContent = "SAVE ME!";
 
-        // Append
+        // Style button to show whether a recipe has already been saved
+        if (JSON.stringify(savedDrinks).includes(JSON.stringify(nextDrinkRecipe))) {
+            saveButton.setAttribute("class", "button is-success");
+            saveButton.textContent = "SAVED";
+        } else {
+            saveButton.setAttribute("class", "button is-info");
+            saveButton.textContent = "SAVE ME!";
+        }
+
+        // Append elements to their parents
         modalContentEl.appendChild(nextCard);
         nextCard.appendChild(nextImageDiv);
         nextCard.appendChild(nextCardContentDiv);
@@ -259,9 +238,7 @@ function showDrinkRecipes(drinkRecipes) {
         saveButton.addEventListener("click", function(event) {
             event.preventDefault();
             if (saveButton.textContent !== "SAVED") {
-                console.log(event.target.parentNode)
-                console.log("hey");
-                savedDrinks.push(allDrinkRecipes[i]);
+                savedDrinks.push(nextDrinkRecipe);
                 localStorage.setItem("userDrinkFavorites", JSON.stringify(savedDrinks));
     
                 saveButton.setAttribute("class", "button is-success");
@@ -271,12 +248,13 @@ function showDrinkRecipes(drinkRecipes) {
         })
 
     }
-    
-    console.log(allDrinkRecipes);
 }
-function showFavorites(savedDrinks) {
-    console.log(savedDrinks);
 
+
+// Display cards with user's saved drink recipes - on page load if available, and after saving a recipe
+function showFavorites(savedDrinks) {
+
+    // Disable the "clear favorites" button if there are no items in the favorites section and enable otherwise
     if (savedDrinks.length !== 0) {
         clearFavoritesBtn.disabled = false;
     } else {
@@ -317,6 +295,7 @@ function showFavorites(savedDrinks) {
 
         let nextRecipeURL = document.createElement("p");
         nextRecipeURL.setAttribute("class", "subtitle is-6 has-text-black");
+
         let nextLink = document.createElement("a");
         nextLink.setAttribute("href", nextRecipe.url);
         nextLink.setAttribute("target", "_blank");
