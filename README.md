@@ -27,7 +27,9 @@ As a team, we aimed to create a web application where users who are looking for 
 
 ## Functionality
 
-![Weather-DEMO](https://user-images.githubusercontent.com/82903201/125833228-4862c1f1-1a77-4414-a194-bb32068a36ef.gif)
+![landing-demo](https://user-images.githubusercontent.com/82903201/126918471-c28a7faf-e0cb-42d7-85e3-731ce9bdb95e.gif)
+![food-search-demo](https://user-images.githubusercontent.com/82903201/126918472-297fd7f9-78dd-4054-bf97-826d5cadbcc3.gif)
+![drink-search-demo](https://user-images.githubusercontent.com/82903201/126918473-6e669972-6cad-45ee-96f9-62901c6fe355.gif)
 #### The demo shows the main functions of Skillet and Shaker recipe finder:
 * The landing page introduces the site, has buttons to navigate to Food and Drink search pages, and includes a "Featured Recipes" section for users who prefer not to spend time searching.
 * Users click on either "Search Food" or "Drink Search" in the navbar which leads them to a page for finding food recipes or drink recipes by certain search parameters. 
